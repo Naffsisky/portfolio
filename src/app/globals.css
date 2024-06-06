@@ -81,7 +81,7 @@
   }
   25% {
     border-color: transparent;
-    border-top-color: #6366f1;
+    border-top-color: rgb(168 85 247);
   }
   50% {
     border-color: transparent;
@@ -102,4 +102,15 @@
   border-style: solid;
   border-color: transparent;
   animation: led-running-light 5s linear infinite;
+}
+
+.cursor-glow {
+  cursor: none;
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: radial-gradient(#8350e8);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }

@@ -14,7 +14,7 @@ export function Sparkles({
   opacity = 1,
   opacitySpeed = 3,
   minOpacity = null,
-  color = "#FFFFFF",
+  color = "#8350e8",
   background = "transparent",
   options = {},
 }) {

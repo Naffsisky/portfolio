@@ -11,10 +11,10 @@ const items = [
 
 function About() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24 bg-zinc-900">
+    <div className="flex min-h-screen flex-col items-center justify-between p-24 bg-zinc-900  ml-64">
       <p className="text-rose-600">About!</p>
-      <div className="h-screen w-screen overflow-hidden">
-        <div className="flex h-screen w-screen px-8 pt-24 md:px-0">
+      <div className="h-screen overflow-hidden">
+        <div className="flex h-screen px-8 pt-24 md:px-0">
           <Details className="mx-auto max-w-2xl">
             {items.map((item, index) => (
               <Details.Item key={index} className="group border-b border-white/10">

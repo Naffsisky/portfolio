@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto_Mono } from "next/font/google";
 import { NextUIProvider } from "@nextui-org/react";
-import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
+import GlowingCursor from "@/components/Cursor";
 import "./globals.css";
 
 const inter = Roboto_Mono({ subsets: ["latin"] });
@@ -20,12 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex h-screen">
-          <Sidebar />
-          <div className="flex-grow">
-            <NextUIProvider>{children}</NextUIProvider>
-          </div>
-        </div>
+        <GlowingCursor />
+        <Sidebar />
+        <NextUIProvider>{children}</NextUIProvider>
       </body>
     </html>
   );
