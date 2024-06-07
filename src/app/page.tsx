@@ -5,9 +5,9 @@ import Typewriter from "typewriter-effect";
 
 export default function Home() {
   return (
-    <main className="min-h-screen p-20 bg-zinc-900 ml-64">
+    <main className="min-h-screen lg:p-20 p-10 bg-zinc-900 lg:ml-64">
       <section className="flex flex-col items-center justify-between">
-        <div className="text-3xl font-bold text-purple-500" id="typewriter">
+        <div className="lg:text-3xl text-xl font-bold text-purple-500" id="typewriter">
           <Typewriter
             onInit={(typewriter) => {
               typewriter.typeString("Hello World!").pauseFor(3000).deleteAll().typeString("My name is Prinafsika").pauseFor(3000).deleteAll().start();
@@ -37,8 +37,8 @@ export default function Home() {
         </div>
       </section>
       <section className="border-2 border-indigo-500 rounded-lg">
-        <div>
-          <p>Hola!</p>
+        <div className="p-3">
+          <p className="text-white text-center">Belom di isi santuy</p>
         </div>
       </section>
     </main>

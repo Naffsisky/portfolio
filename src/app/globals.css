@@ -109,8 +109,59 @@
   position: fixed;
   width: 20px;
   height: 20px;
-  background-color: radial-gradient(#8350e8);
-  border-radius: 50%;
+  background-color: radial-gradient(800px circle at 20px 20px, #8350e8, transparent 40%);
+  border-radius: 100%;
   pointer-events: none;
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes red-running-light {
+  0% {
+    border-color: transparent;
+  }
+  25% {
+    border-color: transparent;
+    border-top-color: white;
+  }
+  50% {
+    border-color: transparent;
+    border-right-color: rgb(239 68 68);
+  }
+  75% {
+    border-color: transparent;
+    border-bottom-color: rgb(239 68 68);
+  }
+  100% {
+    border-color: transparent;
+    border-left-color: rgb(239 68 68);
+  }
+}
+
+@keyframes red-running-text {
+  0% {
+    color: red;
+  }
+  25% {
+   color: white;
+  }
+  50% {
+    color: red;
+  }
+  75% {
+    color: white;
+  }
+  100% {
+    color: red;
+  }
+}
+
+.red-running-border {
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  animation: red-running-light 5s linear infinite;
+}
+
+.red-running-text {
+  animation: red-running-text 5s infinite;
 }

@@ -1,47 +1,65 @@
+'use client';
 import Link from "next/link";
+import { useState } from "react";
 
 const Sidebar = () => {
   const year = new Date().getFullYear();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <div className="w-64 bg-zinc-900 text-white items-center justify-start flex flex-col border-indigo-500 border-2 fixed h-full">
-      <div>
-        <h2 className="text-2xl text-indigo-500 py-5 relative w-fit h-auto flex bg-gradient-to-r items-center from-blue-500 via-purple-500 to-pink-500 bg-clip-text font-extrabold text-transparent text-center select-auto">
-          <Link href="/">Nap Menu&apos;s</Link>
-        </h2>
-      </div>
-      <hr className="border-t border-blue-500 w-full led-running-border" />
-      <div className="flex-grow flex flex-col justify-center">
-        <ul className="flex flex-col">
-          <Link href="/" className="mb-2 btn btn-primary bg-transparent">
-            <li>
-              <span className="text-white">Home</span>
-            </li>
-          </Link>
-          <Link href="/about" className="mb-2 btn btn-primary bg-transparent">
-            <li>
-              <span className="text-white">About</span>
-            </li>
-          </Link>
-          <li className="mb-2 btn btn-primary bg-transparent">
-            <Link href="/projects">
-              <span className="text-white">Projects</span>
+    <div>
+      <button className="md:hidden p-2 fixed top-0 left-0 z-30 pt-7" onClick={toggleSidebar}>
+        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          {isOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />}
+        </svg>
+      </button>
+      <div
+        className={`fixed h-full z-20 bg-zinc-900 text-white items-center justify-start flex flex-col border-indigo-500 border-2 transform ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 transition-transform duration-300 ease-in-out w-64`}
+      >
+        <div>
+          <h2 className="text-2xl text-indigo-500 py-5 relative w-fit h-auto flex bg-gradient-to-r items-center from-blue-500 via-purple-500 to-pink-500 bg-clip-text font-extrabold text-transparent text-center select-auto">
+            <Link href="/">Nap Menu&apos;s</Link>
+          </h2>
+        </div>
+        <hr className="border-t border-blue-500 w-full led-running-border" />
+        <div className="flex-grow flex flex-col justify-center">
+          <ul className="flex flex-col">
+            <Link href="/" className="mb-2 btn btn-primary bg-transparent">
+              <li>
+                <span className="text-white">Home</span>
+              </li>
             </Link>
-          </li>
-        </ul>
+            <Link href="/about" className="mb-2 btn btn-primary bg-transparent">
+              <li>
+                <span className="text-white">About</span>
+              </li>
+            </Link>
+            <li className="mb-2 btn btn-primary bg-transparent">
+              <Link href="/projects">
+                <span className="text-white">Projects</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <hr className="border-t border-purple-500 w-full led-running-border" />
+        <Link href="#" className="py-3 hover:underline">
+          Github
+        </Link>
+        <Link href="#" className="py-3 hover:underline">
+          LinkedIn
+        </Link>
+        <Link href="#" className="py-3 hover:underline">
+          Instagram
+        </Link>
+        <hr className="border-t border-purple-500 w-full led-running-border" />
+        <p className="text-center py-3">Copyright &copy; {year}</p>
       </div>
-      <hr className="border-t border-purple-500 w-full led-running-border" />
-      <Link href="#" className="py-3 hover:underline">
-        Github
-      </Link>
-      <Link href="#" className="py-3 hover:underline">
-        LinkedIn
-      </Link>
-      <Link href="#" className="py-3 hover:underline">
-        Instagram
-      </Link>
-      <hr className="border-t border-purple-500 w-full led-running-border" />
-      <p className="text-center py-3">Copyright &copy; {year}</p>
     </div>
   );
 };
