@@ -19,8 +19,8 @@ function About() {
       <Sparkles density={1200} className="absolute h-full [mask-image:radial-gradient(50%_50%,blue,transparent_85%)]" />
       <h2 className="text-3xl font-bold text-purple-500">About me!</h2>
       <p className="pt-3 text-white italic">&quot;Hari ini adalah hari yang bisa menentukan sebuah kejadian untuk masa depan&quot;</p>
-      <div className="h-screen overflow-hidden z-10">
-        <div className="flex h-screen px-8 pt-20 md:px-0">
+      <div className="overflow-hidden z-10">
+        <div className="flex min-h-screen px-8 pt-20 md:px-0">
           <Details className="mx-auto max-w-2xl">
             {items.map((item, index) => (
               <Details.Item key={index} className="group border-b border-white/10">

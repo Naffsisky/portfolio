@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -45,16 +45,21 @@ const Sidebar = () => {
                 <span className="text-white">Projects</span>
               </Link>
             </li>
+            <li className="mb-2 btn btn-primary bg-transparent">
+              <Link href="/projects">
+                <span className="text-white">Blog</span>
+              </Link>
+            </li>
           </ul>
         </div>
         <hr className="border-t border-purple-500 w-full led-running-border" />
-        <Link href="#" className="py-3 hover:underline">
+        <Link href="https://github.com/Naffsisky" target="_blank" className="py-3 hover:underline hover:text-purple-500">
           Github
         </Link>
-        <Link href="#" className="py-3 hover:underline">
+        <Link href="https://linkedin.com/in/prinafsika/" target="_blank" className="py-3 hover:underline hover:text-purple-500">
           LinkedIn
         </Link>
-        <Link href="#" className="py-3 hover:underline">
+        <Link href="#" className="py-3 hover:underline hover:text-purple-500">
           Instagram
         </Link>
         <hr className="border-t border-purple-500 w-full led-running-border" />

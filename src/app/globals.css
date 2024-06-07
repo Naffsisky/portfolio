@@ -117,23 +117,19 @@
 
 @keyframes red-running-light {
   0% {
-    border-color: transparent;
+    border-color: rgb(239 68 68);
   }
   25% {
-    border-color: transparent;
-    border-top-color: white;
+    border-color: white;
   }
   50% {
-    border-color: transparent;
-    border-right-color: rgb(239 68 68);
+    border-color: rgb(239 68 68);
   }
   75% {
-    border-color: transparent;
-    border-bottom-color: rgb(239 68 68);
+    border-color: white;
   }
   100% {
-    border-color: transparent;
-    border-left-color: rgb(239 68 68);
+    border-color: rgb(239 68 68);
   }
 }
 
@@ -155,8 +151,26 @@
   }
 }
 
+@keyframes indigo-running-text {
+  0% {
+    color: indigo-500;
+  }
+  25% {
+   color: white;
+  }
+  50% {
+    color: ndigo-500;
+  }
+  75% {
+    color: white;
+  }
+  100% {
+    color: ndigo-500;
+  }
+}
+
 .red-running-border {
-  border-width: 2px;
+  border-width: 0.5px;
   border-style: solid;
   border-color: transparent;
   animation: red-running-light 5s linear infinite;
@@ -164,4 +178,8 @@
 
 .red-running-text {
   animation: red-running-text 5s infinite;
+}
+
+.indigo-running-text {
+  animation: indigo-running-text 5s infinite;
 }
