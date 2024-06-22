@@ -36,11 +36,10 @@ export default function Marquee() {
                 <div className="pb-4 font-light text-white/75">{item.body}</div>
 
                 <div className="mt-auto flex items-center gap-4">
+                  {/* eslint-disable-next-line */}
                   <img src={item.image} className="h-9 w-9 rounded-full" />
-
                   <div className="flex flex-col text-sm">
                     <div className="text-white">{item.name}</div>
-
                     <div className="text-white/75">{item.title}</div>
                   </div>
                 </div>

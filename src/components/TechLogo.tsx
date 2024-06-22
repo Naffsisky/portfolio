@@ -1,29 +1,75 @@
 import React from "react";
 
 const logos = [
-  "https://skillicons.dev/icons?i=react",
-  "https://skillicons.dev/icons?i=laravel",
-  "https://skillicons.dev/icons?i=nextjs",
-  "https://skillicons.dev/icons?i=typescript",
-  "https://skillicons.dev/icons?i=remix",
-  "https://skillicons.dev/icons?i=nestjs",
-  "https://skillicons.dev/icons?i=nuxt",
-  "https://skillicons.dev/icons?i=docker",
-  "https://skillicons.dev/icons?i=php",
-  "https://skillicons.dev/icons?i=javascript",
-  "https://skillicons.dev/icons?i=html",
-  "https://skillicons.dev/icons?i=css",
+  {
+    name: "react",
+    url: "https://skillicons.dev/icons?i=react",
+  },
+  {
+    name: "laravel",
+    url: "https://skillicons.dev/icons?i=laravel",
+  },
+  {
+    name: "nextjs",
+    url: "https://skillicons.dev/icons?i=nextjs",
+  },
+  {
+    name: "typescript",
+    url: "https://skillicons.dev/icons?i=typescript",
+  },
+  {
+    name: "remixjs",
+    url: "https://skillicons.dev/icons?i=remix",
+  },
+  {
+    name: "nestjs",
+    url: "https://skillicons.dev/icons?i=nestjs",
+  },
+  {
+    name: "nuxt",
+    url: "https://skillicons.dev/icons?i=nuxt",
+  },
+  {
+    name: "docker",
+    url: "https://skillicons.dev/icons?i=docker",
+  },
+  {
+    name: "php",
+    url: "https://skillicons.dev/icons?i=php",
+  },
+  {
+    name: "javascript",
+    url: "https://skillicons.dev/icons?i=javascript",
+  },
+  {
+    name: "html",
+    url: "https://skillicons.dev/icons?i=html",
+  },
+  {
+    name: "css",
+    url: "https://skillicons.dev/icons?i=css",
+  },
 ];
 
 const TechLogo = () => {
   return (
-    <div className="marquee-container overflow-hidden whitespace-nowrap">
-      <div className="marquee-content flex w-max animate-marquee">
-        {[...logos, ...logos].map((logo, index) => (
-          <div key={index} className="flex items-center px-5">
-            <img src={logo} alt="Tech logo" className="h-10 w-10" />
-          </div>
-        ))}
+    <div className="relative flex items-center">
+      <div className="relative flex max-w-[100vw] overflow-hidden py-5">
+        <div className="flex w-max animate-marquee [--duration:60s]">
+          {[...logos, ...logos].map((logo, index) => (
+            <div key={index} className="h-full px-2.5">
+              <div className="relative h-full w-[28rem] rounded-2xl border border-white/5 bg-white/5 px-8 py-6">
+                <div className="mt-auto flex flex-col items-center gap-3">
+                  {/* eslint-disable-next-line */}
+                  <img src={logo.url} className="h-20 w-20 rounded-full" />
+                  <div className="flex flex-col">
+                    <h3 className="text-white text-3xl capitalize">{logo.name}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
