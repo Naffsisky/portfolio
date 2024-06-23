@@ -4,12 +4,12 @@ import { NextUIProvider } from "@nextui-org/react";
 import Sidebar from "@/components/Sidebar";
 import GlowingCursor from "@/components/Cursor";
 // import Loading from "@/components/Loading";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import "./globals.css";
 
 const inter = Roboto_Mono({ subsets: ["latin"] });
-const Loading = dynamic(() => import('@/components/Loading'), { ssr: false });
+const Loading = dynamic(() => import("@/components/Loading"), { ssr: false });
 
 export const metadata: Metadata = {
   title: " + Prinafsika + ",
@@ -28,7 +28,15 @@ export default function RootLayout({
         <Sidebar />
         <Loading />
         <Suspense fallback={<>Loading...</>} />
-        <NextUIProvider>{children}</NextUIProvider>
+        <NextUIProvider>
+          <div className="h-screen flex flex-col justify-center items-center lg:ml-64">
+            <div className="border-2 border-indigo-500 p-5 shadow-lg shadow-indigo-500">
+              <h1 className="text-3xl font-bold text-center text-white">Belum jadi sabar bro!</h1>
+              <h1 className="text-3xl font-bold text-center text-purple-500 pt-5">Website under construction!</h1>
+            </div>
+          </div>
+          {children}
+        </NextUIProvider>
         <Suspense />
       </body>
     </html>
