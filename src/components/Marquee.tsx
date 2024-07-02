@@ -27,8 +27,8 @@ const items = [
 
 export default function Marquee() {
   return (
-    <div className="relative flex items-center">
-      <div className="relative flex max-w-[100vw] overflow-hidden py-5">
+    <div className="items-center">
+      <div className="relative flex lg:max-w-screen-lg max-w-[22rem] overflow-hidden py-5">
         <div className="flex w-max animate-marquee [--duration:30s] hover:[animation-play-state:paused]">
           {[...items, ...items].map((item, index) => (
             <div key={index} className="h-full px-2.5">

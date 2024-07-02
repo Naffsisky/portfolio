@@ -14,16 +14,13 @@ function Photos() {
         <Image src="/images/profile/3.png" className="rounded-box" alt="img3" width={300} height={300} />
       </div>
       <div className="carousel-item">
-        <Image src="/images/profile/img4.jpg" className="rounded-box" alt="img4" width={300} height={300} />
+        <Image src="/images/profile/6.png" className="rounded-box" alt="img4" width={300} height={300} />
       </div>
       <div className="carousel-item">
-        <Image src="/images/profile/img5.jpg" className="rounded-box" alt="img5" width={300} height={300} />
+        <Image src="/images/profile/5.png" className="rounded-box" alt="img5" width={300} height={300} />
       </div>
       <div className="carousel-item">
-        <Image src="/images/profile/img6.jpg" className="rounded-box" alt="img6" width={300} height={300} />
-      </div>
-      <div className="carousel-item">
-        <Image src="/images/profile/img7.jpg" className="rounded-box" alt="img7" width={300} height={300} />
+        <Image src="/images/profile/4.png" className="rounded-box" alt="img6" width={300} height={300} />
       </div>
     </div>
   );

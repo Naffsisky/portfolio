@@ -54,11 +54,11 @@ const logos = [
 const TechLogo = () => {
   return (
     <div className="relative flex items-center">
-      <div className="relative flex max-w-[100vw] overflow-hidden py-5">
+      <div className="relative lg:max-w-screen-lg max-w-[22rem] overflow-hidden py-5">
         <div className="flex w-max animate-marquee [--duration:60s]">
           {[...logos, ...logos].map((logo, index) => (
             <div key={index} className="h-full px-2.5">
-              <div className="relative h-full w-[28rem] rounded-2xl border border-white/5 bg-white/5 px-8 py-6">
+              <div className="relative h-full w-[18rem] rounded-2xl border border-white/5 bg-white/5 px-8 py-6">
                 <div className="mt-auto flex flex-col items-center gap-3">
                   {/* eslint-disable-next-line */}
                   <img src={logo.url} className="h-20 w-20 rounded-full" />

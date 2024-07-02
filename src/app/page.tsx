@@ -50,16 +50,14 @@ export default function Home() {
         ></path>
       </svg>
 
-      <section className="lg:px-20 p-10">
+      <section className="lg:px-20">
         <div className="flex flex-col justify-center items-center pb-5">
-          <div className="px-5">
-            <span className="absolute mx-auto py-4 flex border w-fit bg-gradient-to-r blur-xl from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-6xl box-content font-extrabold text-transparent text-center select-none">
+            <span className="absolute py-4 flex border bg-gradient-to-r blur-xl from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-5xl box-content font-extrabold text-transparent text-center select-none">
               Introduction
             </span>
-            <h1 className="relative top-0 w-fit h-auto py-4 justify-center flex bg-gradient-to-r items-center from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-6xl font-extrabold text-transparent text-center select-auto px-5">
+            <h1 className="py-4 justify-center flex bg-gradient-to-r items-center from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-5xl font-extrabold text-transparent text-center select-auto">
               Introduction
             </h1>
-          </div>
         </div>
         <div className="border-2 border-blue-500 rounded-lg bg-slate-900">
           <div className="p-3">
@@ -76,17 +74,19 @@ export default function Home() {
       <section className="lg:px-20">
         <div className="py-5">
           <h3 className="text-2xl font-bold text-indigo-500 text-center pb-5">EXPERIENCE</h3>
-          <Experience />
+          <div className="px-3">
+            <Experience />
+          </div>
         </div>
       </section>
       <section className="flex flex-col items-center justify-between py-5 px-3">
         <h2 className="text-2xl font-bold text-indigo-500 pb-5">GALLERY</h2>
         <Photos />
       </section>
-      <section className="flex flex-col items-center justify-between py-5 px-3">
+      {/* <section className="flex flex-col items-center justify-between py-5 px-3">
         <h2 className="text-2xl font-bold text-indigo-500 pb-5">TESTIMONIES</h2>
         <Marquee />
-      </section>
+      </section> */}
 
       <section className="flex flex-col items-center justify-between py-5 px-3">
         <h2 className="text-2xl font-bold text-indigo-500 pb-5">TECH STACK</h2>
