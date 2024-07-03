@@ -80,13 +80,14 @@ export default function Home() {
         </div>
       </section>
       <section className="flex flex-col items-center justify-between py-5 px-3">
-        <h2 className="text-2xl font-bold text-indigo-500 pb-5">GALLERY</h2>
+        <h2 className="text-2xl font-bold text-indigo-500 pb-2">GALLERY</h2>
+        <p className="text-sm text-white pb-5">Swipe left!</p>
         <Photos />
       </section>
-      {/* <section className="flex flex-col items-center justify-between py-5 px-3">
-        <h2 className="text-2xl font-bold text-indigo-500 pb-5">TESTIMONIES</h2>
+      <section className="flex flex-col items-center justify-between py-5 px-3">
+        <h2 className="text-2xl font-bold text-indigo-500 pb-5">LEARNING COMPANY</h2>
         <Marquee />
-      </section> */}
+      </section>
 
       <section className="flex flex-col items-center justify-between py-5 px-3">
         <h2 className="text-2xl font-bold text-indigo-500 pb-5">TECH STACK</h2>

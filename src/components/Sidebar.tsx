@@ -47,11 +47,11 @@ const Sidebar = () => {
                 <span className="text-white">Projects</span>
               </li>
             </Link>
-            <li className="mb-2 btn btn-primary bg-transparent">
-              <Link href="/projects">
+            <Link href="/blog" className="mb-2 btn btn-primary bg-transparent">
+              <li>
                 <span className="text-white">Blog</span>
-              </Link>
-            </li>
+              </li>
+            </Link>
           </ul>
         </div>
         <hr className="border-t border-purple-500 w-full led-running-border" />
@@ -73,7 +73,7 @@ const Sidebar = () => {
             <span className="col-span-1">LinkedIn</span>
           </div>
         </Link>
-        <Link href="#" className="py-3 hover:underline hover:text-purple-500">
+        <Link href="https://www.instagram.com/naffsvn/" target="_blank" className="py-3 hover:underline hover:text-purple-500">
           <div className="grid grid-cols-5 items-center">
             <p></p>
             <span className="col-span-1 flex justify-center">

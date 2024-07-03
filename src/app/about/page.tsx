@@ -7,7 +7,7 @@ import { Sparkles } from "@/components/Sparkles";
 
 const items = [
   { title: "Hobby", content: "Gaming, Coding, Cooking, Sleep, and sometime need relax on the beach or mountain." },
-  { title: "Personalities", content: "Introvert (INTJ-T) aka Shy." },
+  { title: "Personalities", content: "Introvert (INTJ-T)." },
   { title: "Favorite Color", content: "I love black and navy, but I also like white and purple." },
   { title: "Currently Learning", content: "For Web Development learn Next.js, React.js, Tailwind CSS, and Database. I am also learning Cyber Security and DevOps." },
 ];
