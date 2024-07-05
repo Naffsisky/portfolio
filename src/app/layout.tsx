@@ -12,6 +12,11 @@ const inter = Roboto_Mono({ subsets: ["latin"] });
 const Loading = dynamic(() => import("@/components/Loading"), { ssr: false });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-16x16.png",
+  },
   title: " + Prinafsika + ",
   description: "This is my portfolio, made with Next.js and Tailwind CSS. In this portfolio, I showcase my projects and skills. I hope you find something that interests you. Thank you!",
 };

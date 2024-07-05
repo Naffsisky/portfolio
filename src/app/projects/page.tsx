@@ -58,8 +58,7 @@ function Projects() {
                 <CardHeader className="absolute z-10 top-1 flex-col !items-start">
                   <p className="text-tiny text-black/60 uppercase font-bold">UI/UX</p>
                   <h4 className="text-indigo-500 font-medium text-large">KuliKu Design</h4>
-                  <small className="text-slate-700 text-justify">Design ini dibuat untuk memenuhi tugas matakuliah UI/UX.</small>
-                  <small className="text-slate-700 text-justify">KuliKu adalah sebuah aplikasi pihak ke 3 atau yang bertugas sebagai midman/penengah antara pekerja dan client.</small>
+                  <small className="text-slate-700 text-justify">Design ini dibuat untuk memenuhi tugas matakuliah UI/UX. KuliKu adalah sebuah aplikasi pihak ke 3 atau yang bertugas sebagai midman atau penengah antara pekerja dan client.</small>
                 </CardHeader>
                 {isLoading && <LoadingAnimation />}
                 <Image removeWrapper alt="Card background" className={`z-0 w-full h-full object-cover blur-sm ${isLoading ? "hidden" : "block"}`} src="/images/projects/kuliku.png" onLoad={() => setIsLoading(false)} />
@@ -70,7 +69,7 @@ function Projects() {
                 <CardHeader className="absolute z-10 top-1 flex-col !items-start">
                   <p className="text-tiny text-black/60 uppercase font-bold">UI/UX</p>
                   <h4 className="text-indigo-500 font-medium text-large">MITA Mobile App</h4>
-                  <small className="text-slate-700 text-justify">Design ini dibuat sebagai wireframe dari aplikasi MITA Mobile.</small>
+                  <small className="text-slate-700 text-justify">MITA adalah sebuah project capstone dari Bangkit Academy. Design ini dibuat sebagai wireframe dari aplikasi MITA Mobile.</small>
                 </CardHeader>
                 {isLoading && <LoadingAnimation />}
                 <Image removeWrapper alt="Card background" className={`z-0 w-full h-full object-cover blur-sm ${isLoading ? "hidden" : "block"}`} src="/images/projects/mita-ui.png" onLoad={() => setIsLoading(false)} />
