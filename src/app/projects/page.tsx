@@ -1,8 +1,12 @@
-import React from "react";
-import { Card, CardHeader, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
+"use client";
+
+import React, { useState } from "react";
+import { Card, CardHeader, CardFooter, Image, Button } from "@nextui-org/react";
 import Link from "next/link";
+import LoadingAnimation from "@/components/AnimationLoading";
 
 function Projects() {
+  const [isLoading, setIsLoading] = useState(true);
   return (
     <div className="flex min-h-screen flex-col items-center justify-between lg:p-24 p-7 bg-zinc-900 lg:ml-64">
       <h2 className="text-3xl font-bold text-purple-500 pb-5">Projects</h2>
@@ -57,7 +61,8 @@ function Projects() {
                   <small className="text-slate-700 text-justify">Design ini dibuat untuk memenuhi tugas matakuliah UI/UX.</small>
                   <small className="text-slate-700 text-justify">KuliKu adalah sebuah aplikasi pihak ke 3 atau yang bertugas sebagai midman/penengah antara pekerja dan client.</small>
                 </CardHeader>
-                <Image removeWrapper alt="Card background" className="z-0 w-full h-full object-cover blur-sm" src="/images/projects/kuliku.png" />
+                {isLoading && <LoadingAnimation />}
+                <Image removeWrapper alt="Card background" className={`z-0 w-full h-full object-cover blur-sm ${isLoading ? "hidden" : "block"}`} src="/images/projects/kuliku.png" onLoad={() => setIsLoading(false)} />
               </Card>
             </Link>
             <Link href="https://www.figma.com/design/GGBxPByiMaBTEdSya9zw5y/MITA-Apps?node-id=0-1&t=uMDN3JPO9X0HOBHj-1" target="_blank" className="col-span-12 sm:col-span-4 h-[300px]">
@@ -67,7 +72,8 @@ function Projects() {
                   <h4 className="text-indigo-500 font-medium text-large">MITA Mobile App</h4>
                   <small className="text-slate-700 text-justify">Design ini dibuat sebagai wireframe dari aplikasi MITA Mobile.</small>
                 </CardHeader>
-                <Image removeWrapper alt="Card background" className="z-0 w-full h-full object-cover blur-sm" src="/images/projects/mita-ui.png" />
+                {isLoading && <LoadingAnimation />}
+                <Image removeWrapper alt="Card background" className={`z-0 w-full h-full object-cover blur-sm ${isLoading ? "hidden" : "block"}`} src="/images/projects/mita-ui.png" onLoad={() => setIsLoading(false)} />
               </Card>
             </Link>
             <Link href="/images/projects/jenkins.png" target="_blank" className="col-span-12 sm:col-span-4 h-[300px]">
@@ -77,7 +83,8 @@ function Projects() {
                   <h4 className="text-indigo-500 font-medium text-large">Jenkins Automation</h4>
                   <small className="text-slate-700 text-justify">Jenkins terintegrasi dengan Jenkinsfile pada github dan docker untuk mempermudah proses deployment.</small>
                 </CardHeader>
-                <Image removeWrapper alt="Card background" className="z-0 w-full h-full object-cover blur-sm" src="/images/projects/jenkins.png" />
+                {isLoading && <LoadingAnimation />}
+                <Image removeWrapper alt="Card background" className={`z-0 w-full h-full object-cover blur-sm ${isLoading ? "hidden" : "block"}`} src="/images/projects/jenkins.png" onLoad={() => setIsLoading(false)} />
               </Card>
             </Link>
             <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5">
