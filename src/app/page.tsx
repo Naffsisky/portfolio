@@ -52,12 +52,8 @@ export default function Home() {
 
       <section className="lg:px-20">
         <div className="flex flex-col justify-center items-center pb-5">
-            <span className="absolute py-4 flex border bg-gradient-to-r blur-xl from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-5xl box-content font-extrabold text-transparent text-center select-none">
-              Introduction
-            </span>
-            <h1 className="py-4 justify-center flex bg-gradient-to-r items-center from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-5xl font-extrabold text-transparent text-center select-auto">
-              Introduction
-            </h1>
+          <span className="absolute py-4 flex border bg-gradient-to-r blur-xl from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-5xl box-content font-extrabold text-transparent text-center select-none">Introduction</span>
+          <h1 className="py-4 justify-center flex bg-gradient-to-r items-center from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-5xl font-extrabold text-transparent text-center select-auto">Introduction</h1>
         </div>
         <div className="border-2 border-blue-500 rounded-lg bg-slate-900">
           <div className="p-3">
@@ -101,6 +97,18 @@ export default function Home() {
           d="M0,64L48,53.3C96,43,192,21,288,21.3C384,21,480,43,576,69.3C672,96,768,128,864,128C960,128,1056,96,1152,69.3C1248,43,1344,21,1392,10.7L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
         ></path>
       </svg>
+      <section className="bg-black pb-10">
+        <div className="flex flex-col justify-center items-center">
+          <h1 className="text-xl text-zinc-500">This website made with</h1>
+
+          <div className="flex gap-3 py-5">
+            <img src="https://skillicons.dev/icons?i=typescript" className="h-10 w-10 rounded-full" />
+            <img src="https://skillicons.dev/icons?i=nextjs" className="h-10 w-10 rounded-full" />
+            <img src="https://skillicons.dev/icons?i=tailwind" className="h-10 w-10 rounded-full" />
+            <img src="https://skillicons.dev/icons?i=docker" className="h-10 w-10 rounded-full" />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

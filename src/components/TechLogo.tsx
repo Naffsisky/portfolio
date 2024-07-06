@@ -42,12 +42,12 @@ const logos = [
     url: "https://skillicons.dev/icons?i=javascript",
   },
   {
-    name: "html",
-    url: "https://skillicons.dev/icons?i=html",
+    name: "mongodb",
+    url: "https://skillicons.dev/icons?i=mongodb",
   },
   {
-    name: "css",
-    url: "https://skillicons.dev/icons?i=css",
+    name: "tailwind",
+    url: "https://skillicons.dev/icons?i=tailwind",
   },
 ];
 
