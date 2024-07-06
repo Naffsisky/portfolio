@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Card, CardHeader, CardFooter, Image, Button } from "@nextui-org/react";
+import { Card, CardHeader, CardFooter, Image } from "@nextui-org/react";
 import Link from "next/link";
 import LoadingAnimation from "@/components/AnimationLoading";
 
@@ -137,7 +137,7 @@ function Projects() {
               <Card isFooterBlurred className="col-span-12 sm:col-span-8 h-[400px] hover:scale-105 border-2 border-red-500">
                 <CardHeader className="absolute z-10 top-1 flex-col items-start">
                   <div className="pb-3">
-                    <p className="text-md text-black/60 uppercase font-bold border border-red-500 bg-red-400 px-5 py-1 rounded-full">Frontend</p>
+                    <p className="text-md text-black/60 uppercase font-bold border border-red-500 bg-red-400 px-5 py-1 rounded-full">Full Stack</p>
                   </div>
                 </CardHeader>
                 {isLoading ? <LoadingAnimation /> : <Image removeWrapper alt="Blog app background" className="z-0 w-full h-full object-cover" src="/images/projects/blog.png" />}
