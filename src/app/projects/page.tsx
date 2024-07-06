@@ -133,7 +133,7 @@ function Projects() {
                 </CardFooter>
               </Card>
             </Link>
-            <Link href="https://getcrew.prinafsika.world" target="_blank" className="col-span-12 sm:col-span-8 h-[400px]">
+            <Link href="https://submission.prinafsika.world" target="_blank" className="col-span-12 sm:col-span-8 h-[400px]">
               <Card isFooterBlurred className="col-span-12 sm:col-span-8 h-[400px] hover:scale-105 border-2 border-red-500">
                 <CardHeader className="absolute z-10 top-1 flex-col items-start">
                   <div className="pb-3">
