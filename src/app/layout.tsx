@@ -36,7 +36,7 @@ export default function RootLayout({
         <Suspense fallback={<>Loading...</>} />
         <NextUIProvider>{children}</NextUIProvider>
         <Suspense />
-        <Script src="http://prinafsika.world:4100/script.js" strategy="lazyOnload" />
+        <Script defer src="http://prinafsika.world:4100/script.js" data-website-id="5c02e9b6-dfe4-4051-8c6c-17972939305e" strategy="lazyOnload" />
       </body>
     </html>
   );
