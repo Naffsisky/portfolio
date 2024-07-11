@@ -29,9 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <script async defer src="https://umami.prinafsika.world/script.js" data-website-id="5c02e9b6-dfe4-4051-8c6c-17972939305e" data-domains="prinafsika.world"></script>
-      </head>
+      <head>{/* <script async defer src="https://umami.prinafsika.world/script.js" data-website-id="5c02e9b6-dfe4-4051-8c6c-17972939305e" data-domains="prinafsika.world"></script> */}</head>
       <body className={inter.className + " bg-zinc-900"}>
         <GlowingCursor />
         <Sidebar />
