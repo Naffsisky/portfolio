@@ -7,6 +7,7 @@ import GlowingCursor from "@/components/Cursor";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import "./globals.css";
+import Script from "next/script";
 
 const inter = Roboto_Mono({ subsets: ["latin"] });
 const Loading = dynamic(() => import("@/components/Loading"), { ssr: false });
@@ -28,9 +29,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <script defer src="http://prinafsika.world:4100/script.js" data-website-id="5c02e9b6-dfe4-4051-8c6c-17972939305e"></script>
-      </head>
       <body className={inter.className + " bg-zinc-900"}>
         <GlowingCursor />
         <Sidebar />
@@ -38,6 +36,7 @@ export default function RootLayout({
         <Suspense fallback={<>Loading...</>} />
         <NextUIProvider>{children}</NextUIProvider>
         <Suspense />
+        <Script src="http://prinafsika.world:4100/script.js" strategy="lazyOnload" />
       </body>
     </html>
   );
