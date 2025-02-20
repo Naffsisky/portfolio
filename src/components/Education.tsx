@@ -1,0 +1,32 @@
+import Image from 'next/image'
+import React from 'react'
+
+function Education() {
+  return (
+    <div className="pt-3">
+      <section className="pb-5 flex flex-col justify-center items-center">
+        <div>
+          <Image src="https://s3.nevaobjects.id/data-collection/logo-upn.png" alt="logo" width={300} height={300} />
+        </div>
+        <div className="pt-3">
+          <h1 className="text-xl font-bold text-center text-white">Universitas Pembangunan Nasional &quot;Veteran&quot; Jawa Timur</h1>
+          <p className="text-xl font-bold text-center text-white pt-2">S1 Teknik Informatika</p>
+          <p className="text-xl font-bold text-center text-white pt-2">2021 - 2025</p>
+          <p className="text-xl font-bold text-center text-white pt-2">IPK: 3.93</p>
+        </div>
+      </section>
+      <section className="pt-5 flex flex-col justify-center items-center">
+        <div>
+          <Image src="https://s3.nevaobjects.id/data-collection/logo-smansa.png" alt="logo" width={300} height={300} />
+        </div>
+        <div className="pt-3">
+          <h1 className="text-xl font-bold text-center text-white">SMAN 1 Rangkasbitung</h1>
+          <p className="text-xl font-bold text-center text-white pt-2">Matematika & IPA</p>
+          <p className="text-xl font-bold text-center text-white pt-2">2018 - 2021</p>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export default Education

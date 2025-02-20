@@ -1,11 +1,12 @@
-"use client";
+'use client'
 
-import { Sparkles } from "@/components/Sparkles";
-import Typewriter from "typewriter-effect";
-import Photos from "@/components/Photos";
-import Marquee from "@/components/Marquee";
-import Experience from "@/components/Experience";
-import TechLogo from "@/components/TechLogo";
+import { Sparkles } from '@/components/Sparkles'
+import Typewriter from 'typewriter-effect'
+import Photos from '@/components/Photos'
+import Marquee from '@/components/Marquee'
+import Experience from '@/components/Experience'
+import TechLogo from '@/components/TechLogo'
+import Education from '@/components/Education'
 
 export default function Home() {
   return (
@@ -15,13 +16,13 @@ export default function Home() {
           <div className="lg:text-3xl text-xl font-bold text-purple-500" id="typewriter">
             <Typewriter
               onInit={(typewriter) => {
-                typewriter.typeString("Hello World!").pauseFor(3000).deleteAll().typeString("My name is Prinafsika").pauseFor(3000).deleteAll().start();
+                typewriter.typeString('Hello World!').pauseFor(3000).deleteAll().typeString('My name is Prinafsika').pauseFor(3000).deleteAll().start()
               }}
               options={{
                 autoStart: true,
                 loop: true,
               }}
-            />{" "}
+            />{' '}
           </div>
 
           <div className="overflow-hidden">
@@ -29,7 +30,7 @@ export default function Home() {
               <div className="text-center text-3xl text-white">
                 <span className="text-indigo-200">I&apos;m a</span> <span className="text-indigo-500">Full Stack Developer</span>
                 <br />
-                <span>and a</span>{" "}
+                <span>and a</span>{' '}
                 <span className="text-indigo-500">
                   <span className="text-[#8350e8]">Human</span> Software Engineer.
                 </span>
@@ -76,6 +77,10 @@ export default function Home() {
         </div>
       </section>
       <section className="flex flex-col items-center justify-between py-5 px-3">
+        <h2 className="text-2xl font-bold text-indigo-500 pb-2">EDUCATION</h2>
+        <Education />
+      </section>
+      <section className="flex flex-col items-center justify-between py-5 px-3">
         <h2 className="text-2xl font-bold text-indigo-500 pb-2">GALLERY</h2>
         <p className="text-sm text-white pb-5">Swipe left!</p>
         <Photos />
@@ -110,5 +115,5 @@ export default function Home() {
         </div>
       </section>
     </main>
-  );
+  )
 }
