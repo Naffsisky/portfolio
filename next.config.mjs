@@ -4,12 +4,22 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "skillicons.dev",
-        pathname: "**",
+        protocol: 'https',
+        hostname: 'skillicons.dev',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh7-rt.googleusercontent.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 's3.nevaobjects.id',
+        pathname: '**',
       },
     ],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

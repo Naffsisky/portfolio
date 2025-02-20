@@ -1,16 +1,16 @@
-"use client";
-import Link from "next/link";
-import { useState } from "react";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
-import { RiInstagramFill } from "react-icons/ri";
+'use client'
+import Link from 'next/link'
+import { useState } from 'react'
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa6'
+import { RiInstagramFill } from 'react-icons/ri'
 
 const Sidebar = () => {
-  const year = new Date().getFullYear();
-  const [isOpen, setIsOpen] = useState(false);
+  const year = new Date().getFullYear()
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   return (
     <div>
@@ -21,7 +21,7 @@ const Sidebar = () => {
       </button>
       <div
         className={`fixed h-full z-20 bg-zinc-900 text-white items-center justify-start flex flex-col border-indigo-500 rounded-2xl border-2 transform ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+          isOpen ? 'translate-x-0' : '-translate-x-full'
         } md:translate-x-0 transition-transform duration-300 ease-in-out w-64`}
       >
         <div>
@@ -45,6 +45,11 @@ const Sidebar = () => {
             <Link href="/projects" className="mb-2 btn btn-primary bg-transparent">
               <li>
                 <span className="text-white">Projects</span>
+              </li>
+            </Link>
+            <Link href="/certificate" className="mb-2 btn btn-primary bg-transparent">
+              <li>
+                <span className="text-white">Certificate</span>
               </li>
             </Link>
             <Link href="/blog" className="mb-2 btn btn-primary bg-transparent">
@@ -86,7 +91,7 @@ const Sidebar = () => {
         <p className="text-center py-3">Copyright &copy; {year}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar
