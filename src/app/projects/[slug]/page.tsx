@@ -42,7 +42,7 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
         </ul>
       </div>
 
-      <div className="border-2 border-purple-500 p-5 shadow-lg shadow-purple-500 mt-5 w-full max-w-4xl">
+      <div className="border-2 border-purple-500 p-5 shadow-lg shadow-purple-500 mt-5 w-full max-w-4xl rounded-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {project.photo.map((photo, index) => (
             <div key={photo} className="relative flex justify-center">

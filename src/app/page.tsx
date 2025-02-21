@@ -100,8 +100,8 @@ export default function Home() {
         <TechLogo />
       </section>
 
-      <section className="lg:px-20">
-        <div className="border-2 border-blue-500 rounded-lg bg-slate-900">
+      <section className="lg:px-20 pb-5">
+        <div className="border-2 border-blue-500 shadow-blue-500 shadow-lg rounded-lg bg-slate-900">
           <div className="py-3 flex flex-col items-center justify-between">
             <Link href={'/projects'} className="text-2xl font-bold text-indigo-500 pb-3">
               Data from <span className="text-purple-500 underline">Projects</span>
