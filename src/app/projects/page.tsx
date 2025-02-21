@@ -51,7 +51,7 @@ function Projects() {
         <section className="mt-10">
           <div className="max-w-[900px] grid gap-6">
             {visibleProjects.map((project) => (
-              <Card key={project.id} className="flex flex-col md:flex-row items-center bg-zinc-800 p-3 rounded-lg">
+              <Card key={project.id} className="flex flex-col md:flex-row items-center bg-zinc-800 p-3 rounded-lg border-2 border-violet-500">
                 <div className="relative w-full md:w-[400px]">
                   {loadingImages[project.id] && (
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-700">
@@ -63,7 +63,7 @@ function Projects() {
                     alt={project.name}
                     width={400}
                     height={200}
-                    className={`rounded-lg w-full h-auto transition-opacity ${loadingImages[project.id] ? 'opacity-0' : 'opacity-100'}`}
+                    className={`rounded-lg w-full h-auto border-1 border-white transition-opacity ${loadingImages[project.id] ? 'opacity-0' : 'opacity-100'}`}
                     onLoad={() => setLoadingImages((prev) => ({ ...prev, [project.id]: false }))}
                     onError={() => setLoadingImages((prev) => ({ ...prev, [project.id]: false }))}
                   />
