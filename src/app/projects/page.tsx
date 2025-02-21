@@ -10,7 +10,7 @@ const categories: string[] = ['All', ...Array.from(new Set(projects.flatMap((p) 
 
 function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All')
-  const [visibleCount, setVisibleCount] = useState(10)
+  const [visibleCount, setVisibleCount] = useState(5)
 
   const [loadingImages, setLoadingImages] = useState<Record<number, boolean>>(
     projects.reduce((acc, project) => {
