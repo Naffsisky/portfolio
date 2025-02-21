@@ -1,5 +1,25 @@
 import { Project } from './types'
 
+export const tagColors: Record<string, string> = {
+  'Full Stack': 'bg-red-400 border-red-500',
+  Frontend: 'bg-teal-400 border-teal-500',
+  Backend: 'bg-purple-400 border-purple-500',
+  DevOps: 'bg-sky-400 border-sky-500',
+  'React JS': 'bg-sky-500 border-sky-600',
+  'UI/UX': 'bg-yellow-400 border-yellow-500',
+  'CI/CD': 'bg-red-500 border-red-600',
+  Figma: 'bg-purple-400 border-purple-500',
+  Docker: 'bg-blue-400 border-blue-500',
+  PHP: 'bg-indigo-500 border-indigo-600',
+  Tailwind: 'bg-cyan-400 border-cyan-500',
+  'System Admin': 'bg-green-500 border-green-600',
+  'Next JS': 'bg-amber-400 border-amber-500',
+  Bootstrap: 'bg-purple-500 border-purple-600',
+  Laravel: 'bg-rose-500 border-rose-600',
+  'React Native': 'bg-sky-600 border-sky-700',
+  HTML: 'bg-orange-500 border-orange-600',
+}
+
 export const projects: Project[] = [
   {
     id: 1,
@@ -50,9 +70,10 @@ export const projects: Project[] = [
     name: 'Jenkins',
     image: 'https://s3.nevaobjects.id/data-collection/project-images/Jenkins.jpg',
     tags: ['DevOps', 'CI/CD', 'System Admin'],
-    photo: [],
-    tech_stack: [],
-    description: 'Jenkins digunakan untuk CI/CD automation...',
+    photo: ['https://s3.nevaobjects.id/data-collection/project-images/jenkins/1.jpg', 'https://s3.nevaobjects.id/data-collection/project-images/jenkins/2.jpg', 'https://s3.nevaobjects.id/data-collection/project-images/jenkins/3.jpg'],
+    tech_stack: ['Jenkins', 'Github', 'Docker', 'VPS'],
+    description:
+      'Jenkins adalah perangkat lunak open-source yang berfungsi untuk mengotomatiskan proses pengembangan perangkat lunak. Jenkins dapat digunakan untuk mengelola dan mengendalikan berbagai tahap, seperti pembuatan, pengujian, pengemasan, dan pengiriman perangkat lunak. Jenkins digunakan untuk CI/CD automation yang di integrasikan dengan gitlab, github, bitbucket, dan lainnya.',
     slug: 'jenkins',
   },
   {
@@ -112,7 +133,6 @@ export const projects: Project[] = [
     description: 'Jenkins digunakan untuk CI/CD automation...',
     slug: 'journal-reserach',
   },
-
   {
     id: 10,
     name: 'Free Software',
@@ -132,5 +152,59 @@ export const projects: Project[] = [
     tech_stack: ['Figma'],
     description: 'Music Player adalah aplikasi pemutar musik yang memudahkan pengguna untuk mendengarkan musik favorit mereka. Aplikasi ini memiliki fitur yang memudahkan pengguna untuk mencari musik yang mereka sukai.',
     slug: 'music-player',
+  },
+  {
+    id: 12,
+    name: 'Get Crew',
+    image: 'https://s3.nevaobjects.id/data-collection/project-images/Getcrew.jpg',
+    tags: ['Full Stack', 'Next JS', 'Tailwind'],
+    photo: [
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/1.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/2.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/3.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/4.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/5.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/6.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/7.jpg',
+    ],
+    tech_stack: ['Next JS', 'Tailwind', 'MySQL', 'RESTful API'],
+    description: 'Music Player adalah aplikasi pemutar musik yang memudahkan pengguna untuk mendengarkan musik favorit mereka. Aplikasi ini memiliki fitur yang memudahkan pengguna untuk mencari musik yang mereka sukai.',
+    slug: 'get-crew',
+  },
+  {
+    id: 13,
+    name: 'Resto App',
+    image: 'https://s3.nevaobjects.id/data-collection/project-images/Getcrew.jpg',
+    tags: ['Full Stack', 'React Native', 'Tailwind'],
+    photo: [
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/1.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/2.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/3.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/4.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/5.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/6.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/7.jpg',
+    ],
+    tech_stack: ['React Native', 'Tailwind', 'MySQL', 'RESTful API'],
+    description: 'Music Player adalah aplikasi pemutar musik yang memudahkan pengguna untuk mendengarkan musik favorit mereka. Aplikasi ini memiliki fitur yang memudahkan pengguna untuk mencari musik yang mereka sukai.',
+    slug: 'get-crew',
+  },
+  {
+    id: 14,
+    name: 'Shortlink',
+    image: 'https://s3.nevaobjects.id/data-collection/project-images/Getcrew.jpg',
+    tags: ['Frontend', 'HTML', 'Bootstrap'],
+    photo: [
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/1.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/2.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/3.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/4.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/5.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/6.jpg',
+      'https://s3.nevaobjects.id/data-collection/project-images/get-crew/7.jpg',
+    ],
+    tech_stack: ['React Native', 'Tailwind', 'MySQL', 'RESTful API'],
+    description: 'Music Player adalah aplikasi pemutar musik yang memudahkan pengguna untuk mendengarkan musik favorit mereka. Aplikasi ini memiliki fitur yang memudahkan pengguna untuk mencari musik yang mereka sukai.',
+    slug: 'get-crew',
   },
 ]

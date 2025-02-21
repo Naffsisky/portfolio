@@ -7,6 +7,8 @@ import Marquee from '@/components/Marquee'
 import Experience from '@/components/Experience'
 import TechLogo from '@/components/TechLogo'
 import Education from '@/components/Education'
+import Diagram from '@/components/Diagram'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -76,15 +78,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section className="flex flex-col items-center justify-between py-5 px-3">
         <h2 className="text-2xl font-bold text-indigo-500 pb-2">EDUCATION</h2>
         <Education />
       </section>
+
       <section className="flex flex-col items-center justify-between py-5 px-3">
         <h2 className="text-2xl font-bold text-indigo-500 pb-2">GALLERY</h2>
         <p className="text-sm text-white pb-5">Swipe left!</p>
         <Photos />
       </section>
+
       <section className="flex flex-col items-center justify-between py-5 px-3">
         <h2 className="text-2xl font-bold text-indigo-500 pb-5">LEARNING COMPANY</h2>
         <Marquee />
@@ -93,6 +98,17 @@ export default function Home() {
       <section className="flex flex-col items-center justify-between py-5 px-3">
         <h2 className="text-2xl font-bold text-indigo-500 pb-5">TECH STACK</h2>
         <TechLogo />
+      </section>
+
+      <section className="lg:px-20">
+        <div className="border-2 border-blue-500 rounded-lg bg-slate-900">
+          <div className="py-3 flex flex-col items-center justify-between">
+            <Link href={'/projects'} className="text-2xl font-bold text-indigo-500 pb-3">
+              Data from <span className="text-purple-500 underline">Projects</span>
+            </Link>
+            <Diagram />
+          </div>
+        </div>
       </section>
 
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

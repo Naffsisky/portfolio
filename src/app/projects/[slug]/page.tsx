@@ -23,11 +23,11 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
 
   return (
     <div className="flex min-h-screen flex-col items-center p-7 bg-zinc-900 lg:ml-64">
-      <div className="w-full flex items-center justify-between relative py-3">
+      <div className="w-full flex items-center justify-center lg:justify-between lg:relative py-3">
         <button onClick={() => router.back()} className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-700 transition hidden lg:block">
           <VscArrowLeft />
         </button>
-        <h2 className="absolute left-1/2 transform -translate-x-1/2 text-3xl font-bold text-purple-500">{project.name}</h2>
+        <h2 className="text-3xl font-bold text-purple-500 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">{project.name}</h2>
       </div>
 
       <p className="text-white max-w-2xl text-justify pt-3">{project.description}</p>
