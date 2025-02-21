@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
     <div>
-      <button className="md:hidden p-2 fixed top-0 left-0 z-30 pt-7" onClick={toggleSidebar}>
+      <button className="lg:hidden p-2 fixed top-0 left-0 z-30 pt-7" onClick={toggleSidebar}>
         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           {isOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />}
         </svg>
@@ -22,7 +22,7 @@ const Sidebar = () => {
       <div
         className={`fixed h-full z-20 bg-zinc-900 text-white items-center justify-start flex flex-col border-indigo-500 rounded-2xl border-2 transform ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } md:translate-x-0 transition-transform duration-300 ease-in-out w-64`}
+        } lg:translate-x-0 transition-transform duration-300 ease-in-out w-64`}
       >
         <div>
           <h2 className="text-2xl text-indigo-500 py-5 relative w-fit h-auto flex bg-gradient-to-r items-center from-blue-500 via-purple-500 to-pink-500 bg-clip-text font-extrabold text-transparent text-center select-auto">
@@ -47,9 +47,9 @@ const Sidebar = () => {
                 <span className="text-white">Projects</span>
               </li>
             </Link>
-            <Link href="/certificate" className="mb-2 btn btn-primary bg-transparent">
+            <Link href="/certificates" className="mb-2 btn btn-primary bg-transparent">
               <li>
-                <span className="text-white">Certificate</span>
+                <span className="text-white">Certificates</span>
               </li>
             </Link>
             <Link href="/blog" className="mb-2 btn btn-primary bg-transparent">
