@@ -15,6 +15,11 @@ const items = [
     image: "/images/company/indi-technology.png",
   },
   {
+    name: "Flyhigh Sinergi Indonesia",
+    title: "Full Stack Developer",
+    image: "/images/company/flyhigh.jpeg",
+  },
+  {
     name: "Google",
     title: "Cloud Computing (ACE)",
     image: "/images/company/google.png",

@@ -6,8 +6,8 @@ import clsx from 'clsx'
 import { Sparkles } from '@/components/Sparkles'
 
 const items = [
-  { title: 'Hobby', content: 'Gaming, Coding, Cooking, Sleep, and sometime need relax on the beach or mountain.' },
-  { title: 'Personalities', content: 'Introvert (INTJ-T).' },
+  { title: 'Hobby', content: 'Gaming, Coding, Cooking, and sometime need relax on the beach or mountain.' },
+  { title: 'Personalities', content: '(INTJ-T) with 65% Introvert, 57% Visioner, 53% Rasional, 82% Perencanaan, 57% Waspada. Tested by 16personalities.com' },
   { title: 'Favorite Color', content: 'I love black and navy, but I also like white and purple.' },
   { title: 'Currently Learning', content: 'For Web Development learn Next.js, React.js, Tailwind CSS, and Database. I am also learning Cyber Security and DevOps.' },
 ]

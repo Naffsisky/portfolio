@@ -10,7 +10,7 @@ tags:
   - 'Cloud Computing'
   - 'Nginx'
 description: ''
-socialImage: '/blog/cloudrun-deploy/images/cloudrun.png'
+socialImage: ''
 ---
 
 ## Clone Project
@@ -82,21 +82,25 @@ Sekarang membuat konfigurasi aplikasi terlebih dahulu
 
    Sesuaikan dengan kebutuhan, dan siapkan juga untuk subdomainnya
 
-2. Membuat Key Application
+2. Install composer
+
+   `composer install`
+
+3. Membuat Key Application
 
    `php artisan key:generate`
 
-3. Build Aplikasi
+4. Build Aplikasi
 
    Jika menggunakan library javascript bisa melakukan
 
    `npm install && npm run build`
 
-4. Migrasi Database
+5. Migrasi Database
 
    Install php mysql **Versi Mysql di sesuaikan**
 
-   `sudo apt-get install php8.1-mysql`
+   `sudo apt-get install php8.1-mysql` atau `php8.1-pgsql`
 
    Lalu migrate
 
@@ -106,7 +110,7 @@ Sekarang membuat konfigurasi aplikasi terlebih dahulu
 
    `php artisan db:seed`
 
-5. Link Storage Application
+6. Link Storage Application
 
    `php artisan storage:link`
 
@@ -124,7 +128,9 @@ Sekarang membuat konfigurasi aplikasi terlebih dahulu
 
    Disini saya menggunakan subdomain submisson dan domain prinafsika.world. Sesuaikan juga versi dari `fpm.sock`
 
-   bisa cek di `sudo vim /etc/php/8.3/fpm/pool.d/www.conf` lalu temukan baris `listen = /run/php/php8.1-fpm.sock`
+   bisa cek di `sudo vim /etc/php/8.1/fpm/pool.d/www.conf` lalu temukan baris `listen = /run/php/php8.1-fpm.sock`
+
+   jika tidak ada bisa install terlebih dahulu `sudo apt install php8.1-fpm`
 
    Contoh konfigurasi nginx `/etc/nginx/sites-available/submission`
 
@@ -161,6 +167,70 @@ Sekarang membuat konfigurasi aplikasi terlebih dahulu
        location ~ /\.(?!well-known).* {
            deny all;
        }
+
+   }
+   ```
+
+   bisa ditambahkan untuk file upload pada nginx `client_max_body_size 5M;`
+
+   ```
+   server {
+         server_name api.office.prinafsika.world;
+         root /var/www/html/rent-office/public;
+
+         client_max_body_size 5M;
+
+         add_header X-Frame-Options "SAMEORIGIN";
+         add_header X-Content-Type-Options "nosniff";
+
+         index index.php;
+
+         charset utf-8;
+
+         location / {
+            try_files $uri $uri/ /index.php?query_string;
+         }
+
+         location = /favicon.ico { access_log off; log_not_found off; }
+         location = /robots.txt { access_log off; log_not_found off; }
+
+         error_page 404 /index.php;
+
+         location ~ \.php$ {
+            fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            include fastcgi_params;
+         }
+
+         location ^~ /livewire {
+         try_files $uri $uri/ /index.php?$query_string;
+         }
+
+         location ~ /\.(?!well-known).* {
+            deny all;
+         }
+
+
+      listen [::]:443 ssl; # managed by Certbot
+      listen 443 ssl; # managed by Certbot
+      ssl_certificate /etc/letsencrypt/live/api.office.prinafsika.world/fullchain.pem; # managed by Certbot
+      ssl_certificate_key /etc/letsencrypt/live/api.office.prinafsika.world/privkey.pem; # managed by Certbot
+      include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+      ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+   }
+   server {
+      if ($host = api.office.prinafsika.world) {
+         return 301 https://$host$request_uri;
+      } # managed by Certbot
+
+
+
+         listen 80;
+         listen [::]:80;
+         server_name api.office.prinafsika.world;
+      return 404; # managed by Certbot
+
 
    }
    ```

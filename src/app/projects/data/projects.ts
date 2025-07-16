@@ -280,9 +280,19 @@ export const projects: Project[] = [
       'Jenkins adalah perangkat lunak open-source yang berfungsi untuk mengotomatiskan proses pengembangan perangkat lunak. Jenkins dapat digunakan untuk mengelola dan mengendalikan berbagai tahap, seperti pembuatan, pengujian, pengemasan, dan pengiriman perangkat lunak. Jenkins digunakan untuk CI/CD automation yang di integrasikan dengan gitlab, github, bitbucket, dan lainnya.',
     slug: 'jenkins',
   },
-
   {
     id: 18,
+    name: 'Platform Social',
+    image: 'https://s3.nevaobjects.id/data-collection/project-images/welder/landing-page.png',
+    tags: ['Full Stack', 'Laravel', 'React JS'],
+    photo: ['https://s3.nevaobjects.id/data-collection/project-images/welder/dashboard.png', 'https://s3.nevaobjects.id/data-collection/project-images/welder/admin.png', 'https://s3.nevaobjects.id/data-collection/project-images/welder/loker.png', 'https://s3.nevaobjects.id/data-collection/project-images/welder/history-loker.png', 'https://s3.nevaobjects.id/data-collection/project-images/welder/landing-page.png'],
+    tech_stack: ['Laravel Sanctum', 'Github', 'React JS', 'MySQL', 'Tailwind'],
+    description:
+      'Jenkins adalah perangkat lunak open-source yang berfungsi untuk mengotomatiskan proses pengembangan perangkat lunak. Jenkins dapat digunakan untuk mengelola dan mengendalikan berbagai tahap, seperti pembuatan, pengujian, pengemasan, dan pengiriman perangkat lunak. Jenkins digunakan untuk CI/CD automation yang di integrasikan dengan gitlab, github, bitbucket, dan lainnya.',
+    slug: 'platform-social',
+  },
+  {
+    id: 19,
     name: 'Blog Site',
     image: 'https://s3.nevaobjects.id/data-collection/project-images/blog-site/7.jpg',
     tags: ['Full Stack', 'Laravel', 'Tailwind'],
