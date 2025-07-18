@@ -57,7 +57,7 @@ const Sidebar = () => {
                 <span className="text-white">Blog</span>
               </li>
             </Link>
-            <Link href="https://s3.nevaobjects.id/data-collection/Prinafsika-resume.pdf" target="_blank" className="mb-2 btn btn-primary bg-transparent">
+            <Link href="/cv" className="mb-2 btn btn-primary bg-transparent">
               <li>
                 <span className="text-white">Download CV</span>
               </li>
