@@ -48,6 +48,9 @@ function Projects() {
             ))}
           </div>
         </section>
+        <div className='my-10 text-center'>
+          <p className='text-white text-sm'>Some project can be live preview in here <Link href="http://live.webinap.com" className='text-purple-500 underline font-semibold'>Demo Project!</Link></p>
+        </div>
         <section className="mt-10">
           <div className="max-w-[900px] grid gap-6">
             {visibleProjects.map((project) => (
