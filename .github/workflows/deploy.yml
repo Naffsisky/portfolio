@@ -14,13 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set IMAGE (lowercase)
+        run: echo "IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
+
       - uses: docker/setup-buildx-action@v3
 
       - name: Meta (tags & labels)
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: ${{ env.IMAGE }}
           tags: |
             type=raw,value=latest
             type=sha
@@ -52,29 +55,42 @@ jobs:
       - name: Add known_hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy via SSH
-        env:
-          GHCR_USERNAME: ${{ secrets.GHCR_USERNAME }}
-          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
-        run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} '\
-            set -euo pipefail; \
-            mkdir -p /opt/myapp && cd /opt/myapp; \
-            cat > docker-compose.yml <<EOF
-            services:
-              web:
-                image: ghcr.io/${{ github.repository }}:latest
-                container_name: myapp
-                restart: unless-stopped
-                ports:
-                  - "80:3000"
-                env_file:
-                  - .env
-            EOF
-            echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USERNAME" --password-stdin
-            docker compose pull
-            docker compose up -d
-            docker image prune -f
-          '
+      # (opsional) sanity check koneksi
       - name: Test SSH
         run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo OK"
+
+      - name: Deploy via SSH
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'bash -s' <<'EOS'
+          set -e
+          # --- Konfigurasi ---
+          APP_DIR="/opt/myapp"
+          IMAGE="${{ env.IMAGE }}:latest"
+          GHCR_USERNAME='${{ secrets.GHCR_USERNAME }}'
+          GHCR_TOKEN='${{ secrets.GHCR_TOKEN }}'
+
+          mkdir -p "$APP_DIR"
+          cd "$APP_DIR"
+
+          # Tulis docker-compose.yml (pakai port 3000:3000; ganti ke 80:3000 kalau mau)
+          cat > docker-compose.yml <<YML
+          services:
+            web:
+              image: $IMAGE
+              container_name: myapp
+              restart: unless-stopped
+              ports:
+                - "3000:3000"
+              env_file:
+                - .env
+          YML
+
+          # Login GHCR kalau token tersedia (skip kalau kosong / image public)
+          if [ -n "\$GHCR_TOKEN" ] && [ -n "\$GHCR_USERNAME" ]; then
+            echo "\$GHCR_TOKEN" | docker login ghcr.io -u "\$GHCR_USERNAME" --password-stdin
+          fi
+
+          docker compose pull
+          docker compose up -d
+          docker image prune -f
+          EOS
