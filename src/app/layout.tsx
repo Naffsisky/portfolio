@@ -37,7 +37,7 @@ export default function RootLayout({
         <Suspense fallback={<>Loading...</>} />
         <NextUIProvider>{children}</NextUIProvider>
         <Suspense />
-        <Script defer src="http://77.237.246.155:3000/script.js" data-website-id="0a527cde-ce9b-4f48-92e1-05cdc731a19f" strategy="lazyOnload" data-domains="webinap.com" />
+        <Script defer src="http://umami.webinap.com/script.js" data-website-id="0a527cde-ce9b-4f48-92e1-05cdc731a19f" strategy="lazyOnload" data-domains="webinap.com" />
       </body>
     </html>
   )
