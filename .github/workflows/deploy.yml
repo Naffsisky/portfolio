@@ -55,28 +55,33 @@ jobs:
       - name: Add known_hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      # (opsional) sanity check koneksi
-      - name: Test SSH
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo OK"
+      # Pastikan secrets ada (biar errornya jelas kalau kosong)
+      - name: Ensure GHCR secrets exist
+        run: |
+          test -n "${{ secrets.GHCR_USERNAME }}" || (echo "Missing GHCR_USERNAME" && exit 1)
+          test -n "${{ secrets.GHCR_TOKEN }}" || (echo "Missing GHCR_TOKEN" && exit 1)
+
+      # Set IMAGE (lowercase) DI JOB DEPLOY
+      - name: Set IMAGE (lowercase)
+        run: echo "IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}:latest" >> $GITHUB_ENV
 
       - name: Deploy via SSH
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'bash -s' <<'EOS'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "bash -s" <<EOS
           set -e
-          # --- Konfigurasi ---
-          APP_DIR="/opt/myapp"
-          IMAGE="${{ env.IMAGE }}:latest"
+          APP_DIR=/opt/myapp
+          IMAGE="${{ env.IMAGE }}"
           GHCR_USERNAME='${{ secrets.GHCR_USERNAME }}'
           GHCR_TOKEN='${{ secrets.GHCR_TOKEN }}'
 
-          mkdir -p "$APP_DIR"
-          cd "$APP_DIR"
+          mkdir -p "\$APP_DIR"
+          cd "\$APP_DIR"
 
-          # Tulis docker-compose.yml (pakai port 3000:3000; ganti ke 80:3000 kalau mau)
+          # Tulis compose (ubah port ke 80:3000 kalau mau)
           cat > docker-compose.yml <<YML
           services:
             web:
-              image: $IMAGE
+              image: \$IMAGE
               container_name: myapp
               restart: unless-stopped
               ports:
@@ -85,10 +90,8 @@ jobs:
                 - .env
           YML
 
-          # Login GHCR kalau token tersedia (skip kalau kosong / image public)
-          if [ -n "\$GHCR_TOKEN" ] && [ -n "\$GHCR_USERNAME" ]; then
-            echo "\$GHCR_TOKEN" | docker login ghcr.io -u "\$GHCR_USERNAME" --password-stdin
-          fi
+          # Login GHCR (meski package public, ini menghindari denied)
+          echo "\$GHCR_TOKEN" | docker login ghcr.io -u "\$GHCR_USERNAME" --password-stdin
 
           docker compose pull
           docker compose up -d
