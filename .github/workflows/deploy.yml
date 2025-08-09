@@ -76,3 +76,5 @@ jobs:
             docker compose up -d
             docker image prune -f
           '
+      - name: Test SSH
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo OK"
