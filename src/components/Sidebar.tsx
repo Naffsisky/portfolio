@@ -26,7 +26,7 @@ const Sidebar = () => {
       >
         <div>
           <h2 className="text-2xl text-indigo-500 py-5 relative w-fit h-auto flex bg-gradient-to-r items-center from-blue-500 via-purple-500 to-pink-500 bg-clip-text font-extrabold text-transparent text-center select-auto">
-            <Link href="/">Nap Menu&apos;s</Link>
+            <Link href="/">Nap Menu</Link>
           </h2>
         </div>
         <hr className="border-t border-blue-500 w-full led-running-border" />
