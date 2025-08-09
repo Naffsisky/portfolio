@@ -37,7 +37,7 @@ function Certificates() {
             <Link href={cert.link} target="_blank">
               <Image
                 src={cert.link}
-                alt={`Certificate ${index + 1}`}
+                alt={cert.alt}
                 width={400}
                 height={300}
                 className={`rounded-md w-full h-auto transition-opacity ${loadingImages[index] ? 'opacity-0' : 'opacity-100'}`}

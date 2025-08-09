@@ -48,11 +48,16 @@ function Projects() {
             ))}
           </div>
         </section>
-        <div className='my-10 text-center'>
-          <p className='text-white text-sm'>Some project can be live preview in here <Link href="https://live.webinap.com" className='text-purple-500 underline font-semibold'>Demo Project!</Link></p>
+        <div className="my-10 text-center">
+          <p className="text-white text-sm">
+            Some project can be live preview in here{' '}
+            <Link href="https://live.webinap.com" className="text-purple-500 underline font-semibold">
+              Demo Project!
+            </Link>
+          </p>
         </div>
         <section className="mt-10">
-          <div className="max-w-[900px] grid gap-6">
+          <div className="grid gap-6">
             {visibleProjects.map((project) => (
               <Card key={project.id} className="flex flex-col md:flex-row items-center bg-zinc-800 p-3 rounded-lg border-2 border-violet-500">
                 <div className="relative w-full md:w-[400px]">
