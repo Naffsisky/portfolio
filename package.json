@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "type": "module",
   "dependencies": {
@@ -23,6 +24,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.383.0",
     "next": "14.2.3",
+    "next-sitemap": "^4.2.3",
     "nprogress": "^0.2.0",
     "react": "^18",
     "react-dom": "^18",

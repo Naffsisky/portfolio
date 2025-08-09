@@ -1,50 +1,52 @@
+import Image from 'next/image'
+
 const items = [
   {
     name: "UPN 'Veteran' Jawa Timur",
-    title: "Teknik Informatika",
-    image: "/images/company/upn.png",
+    title: 'Teknik Informatika',
+    image: '/images/company/upn.png',
   },
   {
-    name: "Bangkit Academy",
-    title: "Cloud Computing",
-    image: "/images/company/bangkit.png",
+    name: 'Bangkit Academy',
+    title: 'Cloud Computing',
+    image: '/images/company/bangkit.png',
   },
   {
-    name: "Indi Technology",
-    title: "Full Stack Developer",
-    image: "/images/company/indi-technology.png",
+    name: 'Indi Technology',
+    title: 'Full Stack Developer',
+    image: '/images/company/indi-technology.png',
   },
   {
-    name: "Flyhigh Sinergi Indonesia",
-    title: "Full Stack Developer",
-    image: "/images/company/flyhigh.jpeg",
+    name: 'Flyhigh Sinergi Indonesia',
+    title: 'Full Stack Developer',
+    image: '/images/company/flyhigh.jpeg',
   },
   {
-    name: "Google",
-    title: "Cloud Computing (ACE)",
-    image: "/images/company/google.png",
+    name: 'Google',
+    title: 'Cloud Computing (ACE)',
+    image: '/images/company/google.png',
   },
   {
-    name: "Cisco",
-    title: "Network Engineer",
-    image: "/images/company/cisco.png",
+    name: 'Cisco',
+    title: 'Network Engineer',
+    image: '/images/company/cisco.png',
   },
   {
-    name: "Dicoding",
-    title: "Backend Developer",
-    image: "/images/company/dicoding.png",
+    name: 'Dicoding',
+    title: 'Backend Developer',
+    image: '/images/company/dicoding.png',
   },
   {
-    name: "Cyber Academy",
-    title: "Cyber Security (Blue Team)",
-    image: "/images/company/cyber-academy.png",
+    name: 'Cyber Academy',
+    title: 'Cyber Security (Blue Team)',
+    image: '/images/company/cyber-academy.png',
   },
   {
-    name: "The British Institute",
-    title: "English",
-    image: "/images/company/tbi.png",
+    name: 'The British Institute',
+    title: 'English',
+    image: '/images/company/tbi.png',
   },
-];
+]
 
 export default function Marquee() {
   return (
@@ -57,7 +59,7 @@ export default function Marquee() {
                 <div className="mt-auto flex items-center justify-center gap-4">
                   <div className="flex items-center gap-8">
                     {/* eslint-disable-next-line */}
-                    <img src={item.image} className="h-14 w-14" />
+                    <Image src={item.image} alt={item.name} className="h-14 w-14" />
                     <div className="flex flex-col text-sm">
                       <div className="text-white">{item.name}</div>
                       <div className="text-white/75">{item.title}</div>
@@ -70,5 +72,5 @@ export default function Marquee() {
         </div>
       </div>
     </div>
-  );
+  )
 }

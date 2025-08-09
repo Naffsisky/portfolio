@@ -13,13 +13,23 @@ const inter = Roboto_Mono({ subsets: ['latin'] })
 const Loading = dynamic(() => import('@/components/Loading'), { ssr: false })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://webinap.com'),
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
     shortcut: '/favicon-16x16.png',
   },
-  title: ' + Prinafsika + ',
+  title: {
+    default: 'Prinafsika Portfolio',
+    template: '%s | Prinafsika Portfolio',
+  },
+  openGraph: {
+    type: 'website',
+    siteName: 'Prinafsika Portfolio',
+    url: 'https://webinap.com',
+  },
   description: 'This is my portfolio, made with Next.js and Tailwind CSS. In this portfolio, I showcase my projects and skills. I hope you find something that interests you. Thank you!',
+  robots: { index: true, follow: true },
 }
 
 export default function RootLayout({

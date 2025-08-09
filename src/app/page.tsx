@@ -1,14 +1,15 @@
-"use client";
+'use client'
 
-import { Sparkles } from "@/components/Sparkles";
-import Typewriter from "typewriter-effect";
-import Photos from "@/components/Photos";
-import Marquee from "@/components/Marquee";
-import Experience from "@/components/Experience";
-import TechLogo from "@/components/TechLogo";
-import Education from "@/components/Education";
-import Diagram from "@/components/Diagram";
-import Link from "next/link";
+import { Sparkles } from '@/components/Sparkles'
+import Typewriter from 'typewriter-effect'
+import Photos from '@/components/Photos'
+import Marquee from '@/components/Marquee'
+import Experience from '@/components/Experience'
+import TechLogo from '@/components/TechLogo'
+import Education from '@/components/Education'
+import Diagram from '@/components/Diagram'
+import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -18,13 +19,13 @@ export default function Home() {
           <div className="lg:text-3xl text-xl font-bold text-purple-500" id="typewriter">
             <Typewriter
               onInit={(typewriter) => {
-                typewriter.typeString("Hello World!").pauseFor(3000).deleteAll().typeString("My name is Prinafsika").pauseFor(3000).deleteAll().start();
+                typewriter.typeString('Hello World!').pauseFor(3000).deleteAll().typeString('My name is Prinafsika').pauseFor(3000).deleteAll().start()
               }}
               options={{
                 autoStart: true,
                 loop: true,
               }}
-            />{" "}
+            />{' '}
           </div>
 
           <div className="overflow-hidden">
@@ -32,7 +33,7 @@ export default function Home() {
               <div className="text-center text-3xl text-white">
                 <span className="text-indigo-200">I&apos;m a</span> <span className="text-indigo-500">Software Engineer</span>
                 <br />
-                <span>and a</span>{" "}
+                <span>and a</span>{' '}
                 <span className="text-indigo-500">
                   <span className="text-[#8350e8]">Cloud Solutions Architect.</span>
                 </span>
@@ -102,7 +103,7 @@ export default function Home() {
       <section className="lg:px-20 pb-5">
         <div className="border-2 border-blue-500 shadow-blue-500 shadow-lg rounded-lg bg-slate-900">
           <div className="py-3 flex flex-col items-center justify-between">
-            <Link href={"/projects"} className="text-2xl font-bold text-indigo-500 pb-3">
+            <Link href={'/projects'} className="text-2xl font-bold text-indigo-500 pb-3">
               Data from <span className="text-purple-500 underline">Projects</span>
             </Link>
             <Diagram />
@@ -122,13 +123,13 @@ export default function Home() {
           <h1 className="text-xl text-zinc-500">This website made with</h1>
 
           <div className="flex gap-3 py-5">
-            <img src="https://skillicons.dev/icons?i=typescript" className="h-10 w-10 rounded-full" />
-            <img src="https://skillicons.dev/icons?i=nextjs" className="h-10 w-10 rounded-full" />
-            <img src="https://skillicons.dev/icons?i=tailwind" className="h-10 w-10 rounded-full" />
-            <img src="https://skillicons.dev/icons?i=docker" className="h-10 w-10 rounded-full" />
+            <Image alt="typescript" src="https://skillicons.dev/icons?i=typescript" className="h-10 w-10 rounded-full" />
+            <Image alt="nextjs" src="https://skillicons.dev/icons?i=nextjs" className="h-10 w-10 rounded-full" />
+            <Image alt="tailwind" src="https://skillicons.dev/icons?i=tailwind" className="h-10 w-10 rounded-full" />
+            <Image alt="docker" src="https://skillicons.dev/icons?i=docker" className="h-10 w-10 rounded-full" />
           </div>
         </div>
       </section>
     </main>
-  );
+  )
 }
