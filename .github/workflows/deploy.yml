@@ -82,7 +82,7 @@ jobs:
           services:
             web:
               image: \$IMAGE
-              container_name: myapp
+              container_name: portfolio
               restart: unless-stopped
               ports:
                 - "3000:3000"
