@@ -1,5 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async headers() {
+    return [
+      // Default untuk semua halaman
+      {
+        source: '/(.*)',
+        headers: [{ key: 'X-Robots-Tag', value: 'index, follow' }],
+      },
+      // Contoh: folder private noindex
+      // {
+      //   source: '/private/(.*)',
+      //   headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive, nosnippet' }],
+      // },
+      // Contoh: blok indexing gambar file statis
+      // {
+      //   source: '/:path*\\.(png|jpe?g|webp|gif|pdf)',
+      //   headers: [{ key: 'X-Robots-Tag', value: 'noimageindex' }],
+      // },
+    ]
+  },
   reactStrictMode: true,
   output: 'standalone',
   images: {

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     shortcut: '/favicon-16x16.png',
   },
   title: {
-    default: 'Prinafsika Portfolio',
+    default: 'Prinafsika Website Portfolio',
     template: '%s | Prinafsika Portfolio',
   },
   openGraph: {
@@ -28,7 +28,37 @@ export const metadata: Metadata = {
     siteName: 'Prinafsika Portfolio',
     url: 'https://webinap.com',
   },
-  description: 'This is my portfolio, made with Next.js and Tailwind CSS. In this portfolio, I showcase my projects and skills. I hope you find something that interests you. Thank you!',
+  alternates: {
+    canonical: '/',
+    languages: { 'id-ID': '/' },
+  },
+  keywords: [
+    'portfolio',
+    'next.js',
+    'tailwind css',
+    'webinap',
+    'prinafsika',
+    'docker',
+    'github actions',
+    'software engineer',
+    'cloud solutions architect',
+    'web development',
+    'programming',
+    'blog',
+    'projects',
+    'skills',
+    'technology',
+    'tech stack',
+    'education',
+    'experience',
+    'gallery',
+    'learning company',
+    'typescript',
+  ],
+  authors: [{ name: 'Prinafsika', url: 'https://webinap.com' }],
+  creator: 'Prinafsika',
+  description:
+    'This is my portfolio, made with Next.js, Tailwind CSS, and deployed using Docker container integrate with Github actions. In this portfolio, I showcase my projects and skills. I hope you find something that interests you. Thank you!',
   robots: { index: true, follow: true },
 }
 
