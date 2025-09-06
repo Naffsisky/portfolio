@@ -57,6 +57,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Prinafsika', url: 'https://webinap.com' }],
   creator: 'Prinafsika',
+  publisher: 'Prinafsika',
   description:
     'This is my portfolio, made with Next.js, Tailwind CSS, and deployed using Docker container integrate with Github actions. In this portfolio, I showcase my projects and skills. I hope you find something that interests you. Thank you!',
   robots: { index: true, follow: true },

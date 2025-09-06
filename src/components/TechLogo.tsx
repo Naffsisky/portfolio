@@ -62,7 +62,7 @@ const TechLogo = () => {
               <div className="relative h-full w-[18rem] rounded-2xl border border-white/5 bg-white/5 px-8 py-6">
                 <div className="mt-auto flex flex-col items-center gap-3">
                   {/* eslint-disable-next-line */}
-                  <Image src={logo.url} alt={logo.name} className="h-20 w-20 rounded-full" />
+                  <img src={logo.url} alt={logo.name} className="h-20 w-20 rounded-full" />
                   <div className="flex flex-col">
                     <h3 className="text-white text-3xl capitalize">{logo.name}</h3>
                   </div>

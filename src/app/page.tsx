@@ -123,10 +123,10 @@ export default function Home() {
           <h1 className="text-xl text-zinc-500">This website made with</h1>
 
           <div className="flex gap-3 py-5">
-            <Image alt="typescript" src="https://skillicons.dev/icons?i=typescript" className="h-10 w-10 rounded-full" />
-            <Image alt="nextjs" src="https://skillicons.dev/icons?i=nextjs" className="h-10 w-10 rounded-full" />
-            <Image alt="tailwind" src="https://skillicons.dev/icons?i=tailwind" className="h-10 w-10 rounded-full" />
-            <Image alt="docker" src="https://skillicons.dev/icons?i=docker" className="h-10 w-10 rounded-full" />
+            <img alt="typescript" src="https://skillicons.dev/icons?i=typescript" className="h-10 w-10 rounded-full" />
+            <img alt="nextjs" src="https://skillicons.dev/icons?i=nextjs" className="h-10 w-10 rounded-full" />
+            <img alt="tailwind" src="https://skillicons.dev/icons?i=tailwind" className="h-10 w-10 rounded-full" />
+            <img alt="docker" src="https://skillicons.dev/icons?i=docker" className="h-10 w-10 rounded-full" />
           </div>
         </div>
       </section>

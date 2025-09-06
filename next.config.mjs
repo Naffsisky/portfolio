@@ -38,6 +38,11 @@ const nextConfig = {
         hostname: 's3.nevaobjects.id',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'is3.cloudhost.id',
+        pathname: '**',
+      },
     ],
   },
 }

@@ -59,7 +59,7 @@ export default function Marquee() {
                 <div className="mt-auto flex items-center justify-center gap-4">
                   <div className="flex items-center gap-8">
                     {/* eslint-disable-next-line */}
-                    <Image src={item.image} alt={item.name} className="h-14 w-14" />
+                    <Image src={item.image} alt={item.name} width={100} height={100} className="h-14 w-14" />
                     <div className="flex flex-col text-sm">
                       <div className="text-white">{item.name}</div>
                       <div className="text-white/75">{item.title}</div>

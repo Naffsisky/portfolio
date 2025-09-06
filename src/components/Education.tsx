@@ -6,7 +6,7 @@ function Education() {
     <div className="pt-3">
       <section className="pb-5 flex flex-col justify-center items-center">
         <div>
-          <Image src="https://s3.nevaobjects.id/data-collection/logo-upn.png" alt="logo" width={300} height={300} />
+          <Image src="https://is3.cloudhost.id/public-data/logo/logo-upn.png" alt="logo" width={300} height={300} />
         </div>
         <div className="pt-3">
           <h1 className="text-xl font-bold text-center text-white">Universitas Pembangunan Nasional &quot;Veteran&quot; Jawa Timur</h1>
@@ -17,7 +17,7 @@ function Education() {
       </section>
       {/* <section className="pt-5 flex flex-col justify-center items-center">
         <div>
-          <Image src="https://s3.nevaobjects.id/data-collection/logo-smansa.png" alt="logo" width={300} height={300} />
+          <Image src="https://is3.cloudhost.id/public-data/logo-smansa.png" alt="logo" width={300} height={300} />
         </div>
         <div className="pt-3">
           <h1 className="text-xl font-bold text-center text-white">SMAN 1 Rangkasbitung</h1>
