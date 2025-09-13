@@ -21,6 +21,14 @@ const nextConfig = {
   },
   reactStrictMode: true,
   output: 'standalone',
+  async rewrites(){
+    return [
+      {
+        source: '/nonton',
+        destination: '/html/nonton.html'
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       {
