@@ -1,199 +1,367 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pemutar Multi-Seri (S3)</title>
-  <style>
-    :root{--bg:#0f1115;--panel:#151925;--muted:#8b93a7;--accent:#4f7cff;--text:#e6eaf2;--border:#23283a}
-    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
-    .app{display:grid;grid-template-columns:320px 1fr;min-height:100vh}
-    .sidebar{background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;min-height:0}
-    .brand{padding:16px;border-bottom:1px solid var(--border);font-weight:700}
-    .cfg{padding:10px 12px;border-bottom:1px solid var(--border);display:grid;gap:10px}
-    .cfg select,.cfg input{width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:#0e111a;color:var(--text)}
-    .search{padding:10px 12px}
-    .search input{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#0e111a;color:var(--text)}
-    .list{overflow:auto;padding:6px}
-    .item{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;cursor:pointer;border:1px solid transparent}
-    .item:hover{background:#101421;border-color:var(--border)}
-    .item.active{background:#101a2e;border-color:#28407a}
-    .idx{opacity:.7;min-width:36px;text-align:right;font-variant-numeric:tabular-nums}
-    .title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .player{display:flex;flex-direction:column;min-width:0}
-    .now{padding:10px 12px;color:var(--muted);font-size:12px;border-bottom:1px solid var(--border)}
-    .video-wrap{position:relative;background:#000;aspect-ratio:16/9}
-    video{width:100%;height:100%;display:block;background:#000}
-    .controls{display:flex;gap:8px;align-items:center;padding:12px;border-top:1px solid var(--border);background:linear-gradient(#10131b,#0f1218)}
-    .controls button,.controls select{background:#101421;border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:10px;cursor:pointer}
-    .controls .grow{flex:1}
-    .footer{padding:8px 12px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
-    @media (max-width:900px){.app{grid-template-columns:1fr}.sidebar{order:2}.player{order:1}}
-  </style>
-</head>
-<body>
-  <div class="app">
-    <aside class="sidebar">
-      <div class="brand">Playlist S3</div>
-      <div class="cfg">
-        <label>
-          Pilih Seri:
-          <select id="series"></select>
-        </label>
-        <div style="font-size:12px;color:var(--muted)">
-          Base: <span id="baseShow"></span>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Nonton Webinap</title>
+    <style>
+      :root {
+        --bg: #0f1115;
+        --panel: #151925;
+        --muted: #8b93a7;
+        --accent: #4f7cff;
+        --text: #e6eaf2;
+        --border: #23283a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
+      }
+      .app {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        min-height: 100vh;
+      }
+      .sidebar {
+        background: var(--panel);
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+      .brand {
+        padding: 16px;
+        border-bottom: 1px solid var(--border);
+        font-weight: 700;
+      }
+      .cfg {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--border);
+        display: grid;
+        gap: 10px;
+      }
+      .cfg select,
+      .cfg input {
+        width: 100%;
+        padding: 8px 10px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: #0e111a;
+        color: var(--text);
+      }
+      .search {
+        padding: 10px 12px;
+      }
+      .search input {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: #0e111a;
+        color: var(--text);
+      }
+      .list {
+        overflow: auto;
+        padding: 6px;
+      }
+      .item {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 1px solid transparent;
+      }
+      .item:hover {
+        background: #101421;
+        border-color: var(--border);
+      }
+      .item.active {
+        background: #101a2e;
+        border-color: #28407a;
+      }
+      .idx {
+        opacity: 0.7;
+        min-width: 36px;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+      .title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .player {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .now {
+        padding: 10px 12px;
+        color: var(--muted);
+        font-size: 12px;
+        border-bottom: 1px solid var(--border);
+      }
+      .video-wrap {
+        position: relative;
+        background: #000;
+        aspect-ratio: 16/9;
+      }
+      video {
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: #000;
+      }
+      .controls {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 12px;
+        border-top: 1px solid var(--border);
+        background: linear-gradient(#10131b, #0f1218);
+      }
+      .controls button,
+      .controls select {
+        background: #101421;
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 8px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .controls .grow {
+        flex: 1;
+      }
+      .footer {
+        padding: 8px 12px;
+        color: var(--muted);
+        font-size: 12px;
+        border-top: 1px solid var(--border);
+      }
+      @media (max-width: 900px) {
+        .app {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          order: 2;
+        }
+        .player {
+          order: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">Playlist Drama</div>
+        <div class="cfg">
+          <label>
+            Pilih Seri:
+            <select id="series"></select>
+          </label>
+          <div style="font-size: 12px; color: var(--muted)">Base: <span id="baseShow"></span></div>
         </div>
-      </div>
-      <div class="search"><input id="q" placeholder="Cari judul episode..." /></div>
-      <div class="list" id="list"></div>
-      <div class="footer">⌨️ K/Space: Play/Pause • J/L: ±10s • N/P: Next/Prev • [ ]: Speed</div>
-    </aside>
+        <div class="search"><input id="q" placeholder="Cari judul episode..." /></div>
+        <div class="list" id="list"></div>
+        <div class="footer">⌨️ K/Space: Play/Pause • J/L: ±10s • N/P: Next/Prev • [ ]: Speed</div>
+      </aside>
 
-    <main class="player">
-      <div class="now">Memutar: <span id="nowTitle">-</span></div>
-      <div class="video-wrap"><video id="vid" controls playsinline preload="metadata"></video></div>
-      <div class="controls">
-        <button id="prev">⏮ Prev</button>
-        <button id="next">Next ⏭</button>
-        <div class="grow"></div>
-        <label>Speed
-          <select id="rate">
-            <option>0.5</option><option>0.75</option><option selected>1.0</option>
-            <option>1.25</option><option>1.5</option><option>1.75</option><option>2.0</option>
-          </select>
-        </label>
-        <button id="reset">Reset Progress</button>
-      </div>
-    </main>
-  </div>
+      <main class="player">
+        <div class="now">Memutar: <span id="nowTitle">-</span></div>
+        <div class="video-wrap"><video id="vid" controls playsinline preload="metadata"></video></div>
+        <div class="controls">
+          <button id="prev">⏮ Prev</button>
+          <button id="next">Next ⏭</button>
+          <div class="grow"></div>
+          <label
+            >Speed
+            <select id="rate">
+              <option>0.5</option>
+              <option>0.75</option>
+              <option selected>1.0</option>
+              <option>1.25</option>
+              <option>1.5</option>
+              <option>1.75</option>
+              <option>2.0</option>
+            </select>
+          </label>
+          <button id="reset">Reset Progress</button>
+        </div>
+      </main>
+    </div>
 
-  <script>
-    // ====== KONFIGURASI SERI KAMU ======
-    const SERIES = [
-      {
-        name: "Identitas Rahasia Sang Pewaris",
-        base: "https://is3.cloudhost.id/napmovie/Identitas-Rahasia-Sang-Pewaris",
-        count: 45,            // ep-001.mp4 … ep-045.mp4
-        pattern: i => `ep-${String(i).padStart(3,'0')}.mp4`
-      },
-      {
-        name: "Sang Pewaris yang Dimanjakan Om",
-        base: "https://is3.cloudhost.id/napmovie/Sang-Pewaris-yang-Dimanjakan-Om",
-        count: 45,
-        pattern: i => `ep-${String(i).padStart(3,'0')}.mp4`
+    <script>
+      // ====== KONFIGURASI SERI KAMU ======
+      const SERIES = [
+        {
+          name: 'Identitas Rahasia Sang Pewaris',
+          base: 'https://is3.cloudhost.id/napmovie/Identitas-Rahasia-Sang-Pewaris',
+          count: 63,
+          pattern: (i) => `ep-${String(i).padStart(3, '0')}.mp4`,
+        },
+        // {
+        //   name: "Sang Pewaris yang Dimanjakan Om",
+        //   base: "https://is3.cloudhost.id/napmovie/Sang-Pewaris-yang-Dimanjakan-Om",
+        //   count: 45,
+        //   pattern: i => `ep-${String(i).padStart(3,'0')}.mp4`
+        // }
+      ]
+
+      // ====== APP ======
+      const $ = (id) => document.getElementById(id)
+      const seriesSel = $('series'),
+        listEl = $('list'),
+        video = $('vid'),
+        q = $('q')
+      const nowTitle = $('nowTitle'),
+        rateSel = $('rate'),
+        prevBtn = $('prev'),
+        nextBtn = $('next'),
+        resetBtn = $('reset'),
+        baseShow = $('baseShow')
+
+      const storeKey = (k) => `s3player::${k}`
+      const save = (k, v) => localStorage.setItem(storeKey(k), JSON.stringify(v))
+      const load = (k, def) => {
+        try {
+          return JSON.parse(localStorage.getItem(storeKey(k))) ?? def
+        } catch {
+          return def
+        }
       }
-    ];
 
-    // ====== APP ======
-    const $ = id => document.getElementById(id);
-    const seriesSel = $('series'), listEl = $('list'), video = $('vid'), q = $('q');
-    const nowTitle = $('nowTitle'), rateSel = $('rate'), prevBtn = $('prev'), nextBtn = $('next'), resetBtn = $('reset'), baseShow = $('baseShow');
+      let items = [] // daftar episode aktif
+      let cur = 0 // index episode aktif
+      let progTimer // simpan progress
 
-    const storeKey = k => `s3player::${k}`;
-    const save = (k,v)=>localStorage.setItem(storeKey(k), JSON.stringify(v));
-    const load = (k,def)=>{ try{ return JSON.parse(localStorage.getItem(storeKey(k))) ?? def; }catch{ return def; } };
+      // init dropdown seri
+      SERIES.forEach((s, i) => {
+        const opt = document.createElement('option')
+        opt.value = i
+        opt.textContent = s.name
+        seriesSel.appendChild(opt)
+      })
+      seriesSel.value = load('lastSeriesIndex', 0)
 
-    let items = [];          // daftar episode aktif
-    let cur = 0;             // index episode aktif
-    let progTimer;           // simpan progress
-
-    // init dropdown seri
-    SERIES.forEach((s, i) => {
-      const opt = document.createElement('option');
-      opt.value = i; opt.textContent = s.name;
-      seriesSel.appendChild(opt);
-    });
-    seriesSel.value = load('lastSeriesIndex', 0);
-
-    function buildItemsFromSeries(idx){
-      const s = SERIES[idx];
-      baseShow.textContent = s.base;
-      const arr = [];
-      for (let i=1;i<=s.count;i++){
-        const file = s.pattern(i);
-        arr.push({ title: `${s.name} — Episode ${String(i).padStart(2,'0')}`, url: `${s.base}/${file}` });
+      function buildItemsFromSeries(idx) {
+        const s = SERIES[idx]
+        baseShow.textContent = s.base
+        const arr = []
+        for (let i = 1; i <= s.count; i++) {
+          const file = s.pattern(i)
+          arr.push({ title: `${s.name} — Episode ${String(i).padStart(2, '0')}`, url: `${s.base}/${file}` })
+        }
+        return arr
       }
-      return arr;
-    }
 
-    function renderList(){
-      const term = (q.value || '').toLowerCase();
-      listEl.innerHTML = '';
-      items.forEach((it, i) => {
-        if (term && !it.title.toLowerCase().includes(term)) return;
-        const row = document.createElement('div');
-        row.className = 'item' + (i===cur ? ' active' : '');
-        row.dataset.i = i;
-        row.innerHTML = `<div class="idx">${String(i+1).padStart(3,'0')}</div>
-                         <div class="title" title="${it.title}">${it.title}</div>`;
-        row.onclick = ()=> playAt(i);
-        listEl.appendChild(row);
-      });
-    }
+      function renderList() {
+        const term = (q.value || '').toLowerCase()
+        listEl.innerHTML = ''
+        items.forEach((it, i) => {
+          if (term && !it.title.toLowerCase().includes(term)) return
+          const row = document.createElement('div')
+          row.className = 'item' + (i === cur ? ' active' : '')
+          row.dataset.i = i
+          row.innerHTML = `<div class="idx">${String(i + 1).padStart(3, '0')}</div>
+                         <div class="title" title="${it.title}">${it.title}</div>`
+          row.onclick = () => playAt(i)
+          listEl.appendChild(row)
+        })
+      }
 
-    function updateActive(){
-      [...listEl.children].forEach(ch => ch.classList.toggle('active', Number(ch.dataset.i)===cur));
-      nowTitle.textContent = items[cur]?.title || '-';
-    }
+      function updateActive() {
+        ;[...listEl.children].forEach((ch) => ch.classList.toggle('active', Number(ch.dataset.i) === cur))
+        nowTitle.textContent = items[cur]?.title || '-'
+      }
 
-    function playAt(i){
-      cur = i;
-      const it = items[i]; if (!it) return;
-      updateActive();
-      const progKey = `${seriesSel.value}|${it.url}`;
-      const last = load('progress', {})[progKey] || 0;
-      video.src = it.url;
-      video.playbackRate = parseFloat(rateSel.value || "1") || 1;
-      video.currentTime = Math.max(0, last - 1);
-      video.play().catch(()=>{});
-      save('lastIndex:'+seriesSel.value, cur);
-    }
+      function playAt(i) {
+        cur = i
+        const it = items[i]
+        if (!it) return
+        updateActive()
+        const progKey = `${seriesSel.value}|${it.url}`
+        const last = load('progress', {})[progKey] || 0
+        video.src = it.url
+        video.playbackRate = parseFloat(rateSel.value || '1') || 1
+        video.currentTime = Math.max(0, last - 1)
+        video.play().catch(() => {})
+        save('lastIndex:' + seriesSel.value, cur)
+      }
 
-    function next(){ if (cur+1 < items.length) playAt(cur+1); }
-    function prev(){ if (cur-1 >= 0) playAt(cur-1); }
+      function next() {
+        if (cur + 1 < items.length) playAt(cur + 1)
+      }
+      function prev() {
+        if (cur - 1 >= 0) playAt(cur - 1)
+      }
 
-    function startProgressTimer(){
-      clearInterval(progTimer);
-      progTimer = setInterval(()=>{
-        const it = items[cur]; if (!it) return;
-        const key = `${seriesSel.value}|${it.url}`;
-        const map = load('progress', {});
-        map[key] = Math.floor(video.currentTime || 0);
-        save('progress', map);
-      }, 3000);
-    }
+      function startProgressTimer() {
+        clearInterval(progTimer)
+        progTimer = setInterval(() => {
+          const it = items[cur]
+          if (!it) return
+          const key = `${seriesSel.value}|${it.url}`
+          const map = load('progress', {})
+          map[key] = Math.floor(video.currentTime || 0)
+          save('progress', map)
+        }, 3000)
+      }
 
-    // events
-    q.addEventListener('input', renderList);
-    rateSel.addEventListener('change', ()=> video.playbackRate = parseFloat(rateSel.value || "1") || 1);
-    nextBtn.addEventListener('click', next);
-    prevBtn.addEventListener('click', prev);
-    resetBtn.addEventListener('click', ()=>{ localStorage.removeItem(storeKey('progress')); alert('Progress dihapus ✅'); });
-    video.addEventListener('ended', next);
-    video.addEventListener('play', startProgressTimer);
-    video.addEventListener('pause', startProgressTimer);
-    window.addEventListener('keydown', (e)=>{
-      if (e.target.matches('input, textarea')) return;
-      const k = e.key.toLowerCase();
-      if (k==='k' || e.code==='Space'){ e.preventDefault(); video.paused ? video.play() : video.pause(); }
-      if (k==='j'){ video.currentTime = Math.max(0, video.currentTime - 10); }
-      if (k==='l'){ video.currentTime = Math.min((video.duration||1)-0.1, video.currentTime + 10); }
-      if (k==='n') next();
-      if (k==='p') prev();
-      if (e.key==='['){ video.playbackRate = Math.max(.25, (video.playbackRate - .25)); rateSel.value = video.playbackRate.toFixed(2).replace(/0+$/,'').replace(/\.$/,''); }
-      if (e.key===']'){ video.playbackRate = Math.min(3, (video.playbackRate + .25)); rateSel.value = video.playbackRate.toFixed(2).replace(/0+$/,'').replace(/\.$/,''); }
-    });
+      // events
+      q.addEventListener('input', renderList)
+      rateSel.addEventListener('change', () => (video.playbackRate = parseFloat(rateSel.value || '1') || 1))
+      nextBtn.addEventListener('click', next)
+      prevBtn.addEventListener('click', prev)
+      resetBtn.addEventListener('click', () => {
+        localStorage.removeItem(storeKey('progress'))
+        alert('Progress dihapus ✅')
+      })
+      video.addEventListener('ended', next)
+      video.addEventListener('play', startProgressTimer)
+      video.addEventListener('pause', startProgressTimer)
+      window.addEventListener('keydown', (e) => {
+        if (e.target.matches('input, textarea')) return
+        const k = e.key.toLowerCase()
+        if (k === 'k' || e.code === 'Space') {
+          e.preventDefault()
+          video.paused ? video.play() : video.pause()
+        }
+        if (k === 'j') {
+          video.currentTime = Math.max(0, video.currentTime - 10)
+        }
+        if (k === 'l') {
+          video.currentTime = Math.min((video.duration || 1) - 0.1, video.currentTime + 10)
+        }
+        if (k === 'n') next()
+        if (k === 'p') prev()
+        if (e.key === '[') {
+          video.playbackRate = Math.max(0.25, video.playbackRate - 0.25)
+          rateSel.value = video.playbackRate.toFixed(2).replace(/0+$/, '').replace(/\.$/, '')
+        }
+        if (e.key === ']') {
+          video.playbackRate = Math.min(3, video.playbackRate + 0.25)
+          rateSel.value = video.playbackRate.toFixed(2).replace(/0+$/, '').replace(/\.$/, '')
+        }
+      })
 
-    // load initial
-    function loadSeries(idx){
-      items = buildItemsFromSeries(idx);
-      cur = Math.min(load('lastIndex:'+idx, 0), items.length-1);
-      renderList();
-      playAt(cur);
-      save('lastSeriesIndex', idx);
-    }
-    seriesSel.addEventListener('change', ()=> loadSeries(Number(seriesSel.value)));
-    loadSeries(Number(seriesSel.value));
-  </script>
-</body>
+      // load initial
+      function loadSeries(idx) {
+        items = buildItemsFromSeries(idx)
+        cur = Math.min(load('lastIndex:' + idx, 0), items.length - 1)
+        renderList()
+        playAt(cur)
+        save('lastSeriesIndex', idx)
+      }
+      seriesSel.addEventListener('change', () => loadSeries(Number(seriesSel.value)))
+      loadSeries(Number(seriesSel.value))
+    </script>
+  </body>
 </html>
