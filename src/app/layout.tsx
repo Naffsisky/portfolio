@@ -1,85 +1,96 @@
-import type { Metadata } from 'next'
-import { Roboto_Mono } from 'next/font/google'
-import { NextUIProvider } from '@nextui-org/react'
-import Sidebar from '@/components/Sidebar'
-import GlowingCursor from '@/components/Cursor'
+import type { Metadata } from "next";
+import { Roboto_Mono } from "next/font/google";
+import { NextUIProvider } from "@nextui-org/react";
+import Sidebar from "@/components/Sidebar";
+import GlowingCursor from "@/components/Cursor";
 // import Loading from "@/components/Loading";
-import dynamic from 'next/dynamic'
-import { Suspense } from 'react'
-import './globals.css'
-import Script from 'next/script'
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import "./globals.css";
+import Script from "next/script";
 
-const inter = Roboto_Mono({ subsets: ['latin'] })
-const Loading = dynamic(() => import('@/components/Loading'), { ssr: false })
+const inter = Roboto_Mono({ subsets: ["latin"] });
+const Loading = dynamic(() => import("@/components/Loading"), { ssr: false });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://webinap.com'),
+  metadataBase: new URL("https://webinap.com"),
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-    shortcut: '/favicon-16x16.png',
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-16x16.png",
   },
   title: {
-    default: 'Prinafsika Website Portfolio',
-    template: '%s | Prinafsika Portfolio',
+    default: "Prinafsika Website Portfolio",
+    template: "%s | Prinafsika Portfolio",
   },
   openGraph: {
-    type: 'website',
-    siteName: 'Prinafsika Portfolio',
-    url: 'https://webinap.com',
+    type: "website",
+    siteName: "Prinafsika Portfolio",
+    url: "https://webinap.com",
   },
   alternates: {
-    canonical: '/',
-    languages: { 'id-ID': '/' },
+    canonical: "/",
+    languages: { "id-ID": "/" },
   },
   keywords: [
-    'portfolio',
-    'next.js',
-    'tailwind css',
-    'webinap',
-    'prinafsika',
-    'docker',
-    'github actions',
-    'software engineer',
-    'cloud solutions architect',
-    'web development',
-    'programming',
-    'blog',
-    'projects',
-    'skills',
-    'technology',
-    'tech stack',
-    'education',
-    'experience',
-    'gallery',
-    'learning company',
-    'typescript',
+    "portfolio",
+    "next.js",
+    "tailwind css",
+    "webinap",
+    "prinafsika",
+    "docker",
+    "github actions",
+    "software engineer",
+    "cloud solutions architect",
+    "web development",
+    "programming",
+    "blog",
+    "projects",
+    "skills",
+    "technology",
+    "tech stack",
+    "education",
+    "experience",
+    "gallery",
+    "learning company",
+    "typescript",
   ],
-  authors: [{ name: 'Prinafsika', url: 'https://webinap.com' }],
-  creator: 'Prinafsika',
-  publisher: 'Prinafsika',
+  authors: [{ name: "Prinafsika", url: "https://webinap.com" }],
+  creator: "Prinafsika",
+  publisher: "Prinafsika",
   description:
-    'This is my portfolio, made with Next.js, Tailwind CSS, and deployed using Docker container integrate with Github actions. In this portfolio, I showcase my projects and skills. I hope you find something that interests you. Thank you!',
+    "This is my portfolio, made with Next.js, Tailwind CSS, and deployed using Docker container integrate with Github actions. In this portfolio, I showcase my projects and skills. I hope you find something that interests you. Thank you!",
   robots: { index: true, follow: true },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <head>{/* <script defer src="https://umami.prinafsika.world/getinfo" data-website-id="b3c5039a-804e-4605-b9fa-84442d2788a5"></script> */}
-      <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "sxm04v3j0c");
-      </script>
+      <head>
+        {/* <script defer src="https://umami.prinafsika.world/getinfo" data-website-id="b3c5039a-804e-4605-b9fa-84442d2788a5"></script> */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FPPJBDCL8D"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-FPPJBDCL8D');
+          `}
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "sxm04v3j0c");
+          `}
+        </script>
       </head>
-      <body className={inter.className + ' bg-zinc-900'}>
+      <body className={inter.className + " bg-zinc-900"}>
         <GlowingCursor />
         <Sidebar />
         <Loading />
@@ -101,5 +112,5 @@ export default function RootLayout({
         </Script>
       </body>
     </html>
-  )
+  );
 }
