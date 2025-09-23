@@ -1,5 +1,4 @@
 'use client';
-
 import Script from 'next/script';
 import { useEffect } from 'react';
 import Clarity from '@microsoft/clarity';
@@ -8,25 +7,34 @@ const CLARITY_ID = 'sxm04v3j0c';
 const HOTJAR_ID = 6495774;
 const HOTJAR_SV = 6;
 
-function shouldLoadTracking() {
-  if (typeof navigator === 'undefined') return true;
-  const gpc = (navigator as any).globalPrivacyControl === true;
-  const dnt =
-    (navigator as any).doNotTrack === '1' ||
-    (window as any).doNotTrack === '1' ||
-    (navigator as any).msDoNotTrack === '1';
-  return !(gpc || dnt);
-}
-
 export default function Analytics() {
   useEffect(() => {
+    // Initialize Clarity
     if (typeof window !== 'undefined' && !(window as any).__CLARITY_ONCE__) {
-      try { Clarity.init(CLARITY_ID); } catch {}
+      try { 
+        Clarity.init(CLARITY_ID); 
+      } catch (error) {
+        console.debug('Clarity initialization failed:', error);
+      }
       (window as any).__CLARITY_ONCE__ = true;
     }
   }, []);
 
-  if (!shouldLoadTracking()) return null;
+  // Check privacy settings di client-side saja
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof navigator === 'undefined') return;
+    
+    const gpc = (navigator as any).globalPrivacyControl === true;
+    const dnt =
+      (navigator as any).doNotTrack === '1' ||
+      (window as any).doNotTrack === '1' ||
+      (navigator as any).msDoNotTrack === '1';
+    
+    if (gpc || dnt) {
+      console.debug('Analytics disabled due to privacy settings');
+      // Optionally disable tracking scripts here
+    }
+  }, []);
 
   return (
     <>
@@ -36,7 +44,6 @@ export default function Analytics() {
         src={`https://static.hotjar.com/c/hotjar-${HOTJAR_ID}.js?sv=${HOTJAR_SV}`}
         onError={() => console.debug('Hotjar diblokir oleh client')}
       />
-
       <Script
         id="clarity-src"
         strategy="afterInteractive"

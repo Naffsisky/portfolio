@@ -77,17 +77,14 @@ export default function RootLayout({
         <Sidebar />
         <Loading />
 
-        {/* Bungkus children agar aman utk hook navigasi di halaman */}
         <NextUIProvider>
           <Suspense fallback={null}>{children}</Suspense>
         </NextUIProvider>
 
-        {/* Hotjar + Clarity (client only) */}
         <Suspense fallback={null}>
           <Analytics />
         </Suspense>
 
-        {/* GA via next/third-parties (biar tidak dobel dengan Script manual) */}
         <GoogleAnalytics gaId="G-FPPJBDCL8D" />
       </body>
     </html>
