@@ -11,6 +11,8 @@ import Script from "next/script";
 
 const inter = Roboto_Mono({ subsets: ["latin"] });
 const Loading = dynamic(() => import("@/components/Loading"), { ssr: false });
+import { GoogleAnalytics } from '@next/third-parties/google'
+import Clarity from '@microsoft/clarity';
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://webinap.com"),
@@ -68,27 +70,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  Clarity.init("sxm04v3j0c");
   return (
     <html lang="en">
       <head>
         {/* <script defer src="https://umami.prinafsika.world/getinfo" data-website-id="b3c5039a-804e-4605-b9fa-84442d2788a5"></script> */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FPPJBDCL8D"></script>
-        <script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-FPPJBDCL8D');
-          `}
-          {`
-            (function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "sxm04v3j0c");
-          `}
-        </script>
       </head>
       <body className={inter.className + " bg-zinc-900"}>
         <GlowingCursor />
@@ -111,6 +97,7 @@ export default function RootLayout({
         `}
         </Script>
       </body>
+      <GoogleAnalytics gaId="G-FPPJBDCL8D" />
     </html>
   );
 }

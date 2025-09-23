@@ -51,6 +51,11 @@ const nextConfig = {
         hostname: 'is3.cloudhost.id',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'static.hotjar.com',
+        pathname: '**',
+      }
     ],
   },
 }
