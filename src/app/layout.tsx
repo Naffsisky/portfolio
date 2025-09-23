@@ -7,7 +7,8 @@ import GlowingCursor from "@/components/Cursor";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import "./globals.css";
-import Analytics from "@/components/Analytics";
+import Analytics from '@/components/Analytics';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Roboto_Mono({ subsets: ["latin"] });
 const Loading = dynamic(() => import("@/components/Loading"), { ssr: false });
@@ -71,16 +72,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>{/* <script defer src="https://umami.prinafsika.world/getinfo" data-website-id="b3c5039a-804e-4605-b9fa-84442d2788a5"></script> */}</head>
-      <body className={inter.className + " bg-zinc-900"}>
+      <body className={inter.className + ' bg-zinc-900'}>
         <GlowingCursor />
         <Sidebar />
         <Loading />
-        <Suspense fallback={<>Loading...</>} />
-        <NextUIProvider>{children}</NextUIProvider>
+
+        {/* Bungkus children agar aman utk hook navigasi di halaman */}
+        <NextUIProvider>
+          <Suspense fallback={null}>{children}</Suspense>
+        </NextUIProvider>
+
+        {/* Hotjar + Clarity (client only) */}
         <Suspense fallback={null}>
           <Analytics />
         </Suspense>
-        <Analytics />
+
+        {/* GA via next/third-parties (biar tidak dobel dengan Script manual) */}
+        <GoogleAnalytics gaId="G-FPPJBDCL8D" />
       </body>
     </html>
   );
