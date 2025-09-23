@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
-import Clarity from '@microsoft/clarity';
+import { usePathname } from 'next/navigation';
 import Script from 'next/script';
+import Clarity from '@microsoft/clarity';
 
 const GA_ID = 'G-FPPJBDCL8D';
 const CLARITY_ID = 'sxm04v3j0c';
@@ -12,30 +12,25 @@ const HOTJAR_SV = 6;
 
 export default function Analytics() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
-  // Init Clarity sekali di client
+  // Init sekali di client
   useEffect(() => {
-    try {
-      Clarity.init(CLARITY_ID);
-    } catch {}
+    try { Clarity.init(CLARITY_ID); } catch {}
   }, []);
 
-  // Kirim page_view ke GA di setiap perubahan route (App Router)
+  // Pageview di setiap pergantian route
   useEffect(() => {
-    const url = pathname + (searchParams?.toString() ? `?${searchParams}` : '');
+    const qs = typeof window !== 'undefined' ? window.location.search : '';
+    const url = `${pathname}${qs || ''}`;
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('config', GA_ID, { page_path: url });
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return (
     <>
-      {/* GA loader */}
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        strategy="afterInteractive"
-      />
+      {/* GA */}
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
       <Script id="ga" strategy="afterInteractive">{`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
