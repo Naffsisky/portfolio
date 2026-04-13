@@ -10,7 +10,6 @@ tags:
   - 'Mahasiswa'
   - 'Daily Life'
 description: 'Artikel atau Blog ini dibuat pada saat liburan semester 4 atau menjelang naik menuju semester 5. Liburan ini bertepatan dengan pendaftaran MSIB batch 5 dan Bangkit 2023 batch 2, maka aku habiskan liburan ini untuk belajar dan bersenang-senang.'
-socialImage: '/blog/first-blog/images/bangkit.png'
 ---
 
 <div style="text-align: justify">

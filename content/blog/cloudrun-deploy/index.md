@@ -10,7 +10,6 @@ tags:
   - 'Web Development'
   - 'Google Cloud Platform'
 description: 'Membuat Backend service menggunakan Node.js dan membuat Container Image lalu dimasukan ke Artifact Registry, membuat Container file dan mendeploy memakai Cloud Run.'
-socialImage: '/blog/cloudrun-deploy/images/cloudrun.png'
 ---
 
 ## Open API

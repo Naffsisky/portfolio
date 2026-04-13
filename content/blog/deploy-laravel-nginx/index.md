@@ -9,7 +9,7 @@ tags:
   - 'Web Development'
   - 'Cloud Computing'
   - 'Nginx'
-description: ''
+description: 'Tutorial deploy aplikasi Laravel di server Linux menggunakan Nginx dan PHP-FPM, mulai dari clone project, konfigurasi .env, install dependency, migrasi database, setup virtual host, hingga pemasangan SSL dengan Certbot.'
 socialImage: ''
 ---
 

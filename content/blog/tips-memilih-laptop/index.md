@@ -10,7 +10,6 @@ tags:
   - 'Mahasiswa'
   - 'Technology'
 description: 'Pada Artikel ini berisi tentang cara memilih laptop yang sesuai dengan kebutuhan penggunaan, dan rentang harga yang disarankan. Terdapat 3 pilihan sistem operasi yaitu, Windows (yang paling umum digunakan), Macintosh atau MacOS, dan Linux.'
-socialImage: '/blog/tips-memilih-laptop/images/macbook.png'
 ---
 
 - [Windows](#apa-itu-windows)

@@ -6,6 +6,7 @@ export type BlogFrontmatter = {
   title: string
   date: string // ex: '2025-08-01' atau '2025-08-01T10:00:00+07:00'
   updatedAt?: string
+  description?: string
   category?: string
   tags?: string[]
   excerpt?: string

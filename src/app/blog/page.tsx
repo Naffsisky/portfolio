@@ -1,28 +1,49 @@
-import Link from 'next/link'
-import { getBlogPosts } from '@/lib/blog'
+import BlogList from './BlogList'
+import { getSortedBlogPosts } from '@/lib/blog'
 
-function BlogPage() {
-  const posts = getBlogPosts()
+const POSTS_PER_PAGE = 10
+const ALL_CATEGORIES = 'All'
+
+type SearchParams = {
+  category?: string | string[]
+  page?: string | string[]
+  q?: string | string[]
+}
+
+function getSingleValue(value?: string | string[]) {
+  return Array.isArray(value) ? value[0] : value
+}
+
+function BlogPage({ searchParams }: { searchParams?: SearchParams }) {
+  const allPosts = getSortedBlogPosts()
+  const categories = [ALL_CATEGORIES, ...Array.from(new Set(allPosts.map((post) => post.category).filter(Boolean) as string[])).sort()]
+  const requestedCategory = getSingleValue(searchParams?.category) ?? ALL_CATEGORIES
+  const selectedCategory = categories.includes(requestedCategory) ? requestedCategory : ALL_CATEGORIES
+  const searchQuery = (getSingleValue(searchParams?.q) ?? '').trim()
+  const normalizedQuery = searchQuery.toLowerCase()
+
+  const filteredPosts = allPosts.filter((post) => {
+    const matchesCategory = selectedCategory === ALL_CATEGORIES || post.category === selectedCategory
+    const searchableContent = [post.title, post.description, post.category, ...(post.tags ?? [])].filter(Boolean).join(' ').toLowerCase()
+    const matchesQuery = normalizedQuery.length === 0 || searchableContent.includes(normalizedQuery)
+    return matchesCategory && matchesQuery
+  })
+
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE))
+  const rawPage = Number(getSingleValue(searchParams?.page) ?? '1')
+  const currentPage = Number.isInteger(rawPage) && rawPage > 0 ? Math.min(rawPage, totalPages) : 1
+  const paginatedPosts = filteredPosts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE)
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between lg:p-24 p-7 bg-zinc-900 lg:ml-64">
-      <h1 className="text-3xl font-bold text-purple-500 mb-8 text-center lg:text-left">Welcome to my Blog!</h1>
-
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-full">
-        {posts.map((post: any) => (
-          <li key={post.slug} className="bg-zinc-800 rounded-lg border-2 border-violet-500 shadow-violet-500 overflow-hidden transition-transform hover:scale-105 hover:shadow-lg">
-            <Link href={`/blog/${post.slug}`} className="block p-6 h-full">
-              <h2 className="text-xl font-semibold text-white mb-2">{post.title}</h2>
-              <p className="text-sm text-zinc-300 mb-2">
-                {' '}
-                &gt; {post.category} | {post.date}
-              </p>
-              <p className="text-zinc-300 text-sm text-justify">{post.description}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <BlogList
+      posts={paginatedPosts}
+      categories={categories}
+      selectedCategory={selectedCategory}
+      searchQuery={searchQuery}
+      currentPage={currentPage}
+      totalPages={totalPages}
+      totalPosts={filteredPosts.length}
+    />
   )
 }
 
