@@ -16,7 +16,10 @@ function getSingleValue(value?: string | string[]) {
 
 function BlogPage({ searchParams }: { searchParams?: SearchParams }) {
   const allPosts = getSortedBlogPosts()
-  const categories = [ALL_CATEGORIES, ...Array.from(new Set(allPosts.map((post) => post.category).filter(Boolean) as string[])).sort()]
+  const categories = [
+    ALL_CATEGORIES,
+    ...Array.from(new Set(allPosts.map((post) => post.category).filter(Boolean) as string[])).sort((a, b) => a.localeCompare(b)),
+  ]
   const requestedCategory = getSingleValue(searchParams?.category) ?? ALL_CATEGORIES
   const selectedCategory = categories.includes(requestedCategory) ? requestedCategory : ALL_CATEGORIES
   const searchQuery = (getSingleValue(searchParams?.q) ?? '').trim()

@@ -141,10 +141,17 @@ export default function BlogPost({ params }: Props) {
               li: ({ children }) => <li className="mb-1 text-amber-400">{children}</li>,
               p: ({ children }) => <p className="my-4 text-white">{children}</p>,
               code: (props: any) => {
-                const { inline, children } = props as { inline?: boolean; children: React.ReactNode }
-                const value = String(children).replace(/\n$/, '')
-                if (inline) return <code className="bg-zinc-800 px-1 py-0.5 rounded text-yellow-200">{value}</code>
-                return <code className="block bg-zinc-800 p-4 rounded-md overflow-x-auto my-4 text-yellow-200">{value}</code>
+                const { inline, children, className } = props as {
+                  inline?: boolean
+                  children: React.ReactNode
+                  className?: string
+                }
+
+                if (inline) {
+                  return <code className="rounded bg-zinc-800 px-1 py-0.5 text-yellow-200">{children}</code>
+                }
+
+                return <code className={`block overflow-x-auto rounded-md bg-zinc-800 p-4 text-yellow-200 ${className || ''}`.trim()}>{children}</code>
               },
               pre: ({ children }) => <pre className="bg-zinc-800 p-0 rounded-md overflow-x-auto my-4">{children}</pre>,
               blockquote: ({ children }) => <blockquote className="border-l-4 border-gray-500 pl-4 italic my-4">{children}</blockquote>,
