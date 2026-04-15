@@ -63,7 +63,7 @@ pipeline {
                     kubectl set image deployment/portfolio \
                       portfolio=${IMAGE_NAME}:${BUILD_NUMBER} \
                       -n portfolio
-                    kubectl rollout status deployment/portfolio -n portfolio --timeout=120s
+                    kubectl rollout status deployment/portfolio -n portfolio --timeout=300s
                 '''
             }
         }
