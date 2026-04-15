@@ -4,9 +4,7 @@ pipeline {
     }
 
     environment {
-        REGISTRY     = 'ghcr.io'
-        IMAGE_NAME   = 'ghcr.io/naffsisky/portfolio'
-        CONTAINER_NAME = 'portfolio'
+        IMAGE_NAME = 'ghcr.io/naffsisky/portfolio'
     }
 
     stages {
@@ -38,7 +36,7 @@ pipeline {
             }
         }
 
-        stage('Create GHCR Secret') {
+        stage('Prepare Namespace & Secret') {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'ghcr-credentials',
@@ -46,6 +44,7 @@ pipeline {
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
                     sh '''
+                        kubectl create namespace portfolio --dry-run=client -o yaml | kubectl apply -f -
                         kubectl create secret docker-registry ghcr-secret \
                           --docker-server=ghcr.io \
                           --docker-username=$DOCKER_USER \
@@ -77,7 +76,6 @@ pipeline {
         }
         failure {
             echo 'Pipeline failed!'
-            sh 'docker logout ghcr.io || true'
         }
         always {
             sh 'docker logout ghcr.io || true'
