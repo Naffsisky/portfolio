@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.google.com)",
+      "Bash(curl -sL --max-time 30 -o \"C:/Users/Nap/Documents/Projects/portfolio/public/blog/jenkins-cicd-k3s-part-1/images/09-pipeline-result.png\" \"https://docs.google.com/u/0/docs-images-rt/ABaEjg3SsOrYrCvK72_O1nBgbPdvhvXrIje8f7i7yt7U60TdiYxnZIu73xvud-7A_J3n83FTUsP9eCQ-OWnyLrTt6nGlSo-lZhiqP_mVMTLol8ZSF8YBviP8FRFh-YztKw8yLbullMq_WGst9HbdvlzVY4jnWFKH4-b_8sVZZVTg=s2048\")"
+    ]
+  }
+}

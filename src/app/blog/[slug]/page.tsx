@@ -155,6 +155,16 @@ export default function BlogPost({ params }: Props) {
               },
               pre: ({ children }) => <pre className="bg-zinc-800 p-0 rounded-md overflow-x-auto my-4">{children}</pre>,
               blockquote: ({ children }) => <blockquote className="border-l-4 border-gray-500 pl-4 italic my-4">{children}</blockquote>,
+              table: ({ children }) => (
+                <div className="overflow-x-auto my-6">
+                  <table className="w-full border-collapse text-white">{children}</table>
+                </div>
+              ),
+              thead: ({ children }) => <thead className="bg-zinc-700">{children}</thead>,
+              tbody: ({ children }) => <tbody className="divide-y divide-zinc-600">{children}</tbody>,
+              tr: ({ children }) => <tr className="border-b border-zinc-600">{children}</tr>,
+              th: ({ children }) => <th className="px-4 py-2 text-left text-purple-300 font-semibold whitespace-nowrap">{children}</th>,
+              td: ({ children }) => <td className="px-4 py-2 text-white">{children}</td>,
             }}
           >
             {processedContent}
