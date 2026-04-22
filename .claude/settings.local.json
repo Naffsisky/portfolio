@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:docs.google.com)",
-      "Bash(curl -sL --max-time 30 -o \"C:/Users/Nap/Documents/Projects/portfolio/public/blog/jenkins-cicd-k3s-part-1/images/09-pipeline-result.png\" \"https://docs.google.com/u/0/docs-images-rt/ABaEjg3SsOrYrCvK72_O1nBgbPdvhvXrIje8f7i7yt7U60TdiYxnZIu73xvud-7A_J3n83FTUsP9eCQ-OWnyLrTt6nGlSo-lZhiqP_mVMTLol8ZSF8YBviP8FRFh-YztKw8yLbullMq_WGst9HbdvlzVY4jnWFKH4-b_8sVZZVTg=s2048\")"
+      "Bash(curl -sL --max-time 30 -o \"C:/Users/Nap/Documents/Projects/portfolio/public/blog/jenkins-cicd-k3s-part-1/images/09-pipeline-result.png\" \"https://docs.google.com/u/0/docs-images-rt/ABaEjg3SsOrYrCvK72_O1nBgbPdvhvXrIje8f7i7yt7U60TdiYxnZIu73xvud-7A_J3n83FTUsP9eCQ-OWnyLrTt6nGlSo-lZhiqP_mVMTLol8ZSF8YBviP8FRFh-YztKw8yLbullMq_WGst9HbdvlzVY4jnWFKH4-b_8sVZZVTg=s2048\")",
+      "Bash(curl -sL --max-time 30 -o C:/Users/Nap/Documents/Projects/portfolio/public/blog/jenkins-cicd-k3s-part-3/images/01-app-one-browser.png https://docs.google.com/docs-images-rt/ABaEjg0Xd9VjTiqsYmJ1X97eiGhRG3h4Uw2m7VlZrmoa1LNfR4pLg2m7O9ReV12vtvc01vgPggyyLey2KqgIEzCHjR3xzcOJ9WsqS1FbbpK2pIoa7g2UhVL0u9CNTwwxm6JxVfbRK-oIVsCSfPF1zKFHbvJU5GF9uAQzg=s2048)",
+      "Bash(curl -sL --max-time 30 -o C:/Users/Nap/Documents/Projects/portfolio/public/blog/jenkins-cicd-k3s-part-3/images/02-app-two-browser.png https://docs.google.com/docs-images-rt/ABaEjg2dwB0hF1mpcSVSJ3AoCDWONyH2lF69BTq7_GfCHjfMR2SxhFhKr1gb6HB-Orxc6UYI7SU-rsex-6sYWuXRpFKlSZlgt2EC0PRUyuhCspgRH3ptX3F31SyQz1yF1SdjvPL5aHSvhIKSXdmdYrN1Yd3wDh5OQ2AAv6qqlg=s2048)",
+      "Bash(curl -sL --max-time 30 -o C:/Users/Nap/Documents/Projects/portfolio/public/blog/jenkins-cicd-k3s-part-3/images/01-app-one-browser.png https://docs.google.com/u/0/docs-images-rt/ABaEjg0MSJX4Gh50_bcx_53IbCbzqhNhhnhqRfGptg_YSt-FkYtH8yBYEiF7dlntiRFGcpMQYgL2ykPqPMDJ82U6FxpDFa6KmpU12JMTsxJU5wlhfQyznTuXQfAVFr-vvEEJbs2TyYvc59maQa0hy0lUR7I2glGUMzWsbPxcTw=s2048)"
     ]
   }
 }
