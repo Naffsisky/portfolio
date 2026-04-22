@@ -12,6 +12,8 @@ tags:
   - 'Security'
   - 'Next.js'
 description: 'Panduan lengkap setup HashiCorp Vault dari mode development hingga production, termasuk inisialisasi, unseal, konfigurasi AppRole, Vault Agent, dan integrasi secrets ke aplikasi Next.js di VPS.'
+seoTitle: 'Setup HashiCorp Vault: Dev, Production & Integrasi VPS'
+seoDescription: 'Panduan setup HashiCorp Vault dengan Docker: inisialisasi, unseal, AppRole authentication, Vault Agent sidecar, dan integrasi secrets ke aplikasi Next.js di VPS.'
 socialImage: ''
 ---
 

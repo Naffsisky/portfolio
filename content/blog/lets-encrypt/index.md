@@ -10,6 +10,8 @@ tags:
   - 'Cloud Computing'
   - 'Google Cloud Platform'
 description: "Let's Encrypt adalah Otoritas Sertifikat (CA) yang memfasilitasi sertifikat TLS/SSL gratis, yang memungkinkan HTTPS terenkripsi pada server web. Certbot pada juga akan secara otomatis untuk mendapatkan sertifikat. Proses mendapatkan dan menginstal sertifikat sepenuhnya diotomatisasi pada Apache dan Nginx. Dalam tutorial kali ini, kita akan menggunakan Certbot untuk sertifikat SSL gratis Apache di Debian 11 dan membuat pembaruan sertifikat secara otomatis."
+seoTitle: 'Pasang SSL Gratis dengan Certbot di Google Compute Engine'
+seoDescription: 'Tutorial setup HTTPS gratis menggunakan Certbot dan Let\'s Encrypt di Google Compute Engine Debian 11 dengan Apache, termasuk konfigurasi domain dan auto-renewal.'
 ---
 
 ## Persiapan

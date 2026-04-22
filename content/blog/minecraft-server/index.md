@@ -10,6 +10,8 @@ tags:
   - 'Games'
   - 'Google Cloud Platform'
 description: 'Deploy server minecraft menggunakan VM Instance di Google Cloud Platform dan menggunakan Rclone + Cronjob untuk membackup seluruh file ke dalam Cloud Storage. Cloud Storage bisa berupa File Storage dari Google Cloud Platform, Google Drive, Microsoft One Drive, atau juga Cloud Storage as a Service lainnya.'
+seoTitle: 'Deploy Minecraft Server + Auto Backup di Google Cloud'
+seoDescription: 'Panduan deploy Minecraft server di Google Cloud VM Instance dan setup auto backup otomatis ke Cloud Storage, Google Drive, atau OneDrive menggunakan Rclone dan Cronjob.'
 ---
 
 ## DAFTAR ISI

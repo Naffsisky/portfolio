@@ -10,6 +10,8 @@ tags:
   - 'Mahasiswa'
   - 'Daily Life'
 description: 'Artikel atau Blog ini dibuat pada saat liburan semester 4 atau menjelang naik menuju semester 5. Liburan ini bertepatan dengan pendaftaran MSIB batch 5 dan Bangkit 2023 batch 2, maka aku habiskan liburan ini untuk belajar dan bersenang-senang.'
+seoTitle: 'First Blog – Perkenalan dan Cerita di Balik Blog Ini'
+seoDescription: 'Post pertama di blog Prinafsika: cerita latar belakang pembuatan blog, aktivitas liburan semester 4, dan persiapan daftar MSIB batch 5 dan Bangkit 2023.'
 ---
 
 <div style="text-align: justify">

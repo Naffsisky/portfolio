@@ -11,6 +11,8 @@ tags:
   - 'Cloud Computing'
   - 'K3s'
 description: 'Tutorial deploy cluster Kubernetes K3s skala menengah-kecil untuk aplikasi frontend, mulai dari setup control plane, join worker node, membuat namespace, deployment, service NodePort, hingga monitoring pod dengan metrics-server.'
+seoTitle: 'Deploy Kubernetes K3s Cluster untuk Aplikasi Frontend'
+seoDescription: 'Setup cluster K3s ringan: install control plane, join worker node, deploy aplikasi frontend dengan NodePort, dan monitoring resource menggunakan metrics-server.'
 socialImage: ''
 ---
 

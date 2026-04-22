@@ -10,6 +10,8 @@ tags:
   - 'Cloud Computing'
   - 'Google Cloud Platform'
 description: 'Tutorial cara mendeploy aplikasi frontend berbasis website html memakai apache2 dan framework Bootstrap dan CodeIgniter versi 3 dan pada backend memakai nodejs serta untuk database memakai mysql atau mariadb, semua dilakukan pada Google Cloud Platform Compute Engine.'
+seoTitle: 'Deploy Node.js, MySQL & CodeIgniter di Google Cloud'
+seoDescription: 'Tutorial deploy aplikasi full-stack: frontend CodeIgniter 3 dengan Apache2, backend Node.js, dan database MySQL di Google Cloud Compute Engine.'
 ---
 
 Kita akan membuat sebuah project yang bernama **Duitmu**

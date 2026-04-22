@@ -12,6 +12,8 @@ tags:
   - 'Docker'
   - 'Kubernetes'
 description: 'Panduan lengkap setup Jenkins Controller menggunakan Docker di home lab, konfigurasi build agent via SSH, hingga validasi pipeline pertama di atas Kubernetes K3s.'
+seoTitle: 'Setup Jenkins Controller & Build Agent via SSH – Part 1'
+seoDescription: 'Panduan setup Jenkins Controller dengan Docker di home lab: registrasi build agent via SSH, instalasi plugin, dan validasi pipeline Groovy pertama di Kubernetes K3s.'
 socialImage: '/blog/jenkins-cicd-k3s-part-1/images/02-jenkins-suggested-plugins.png'
 ---
 

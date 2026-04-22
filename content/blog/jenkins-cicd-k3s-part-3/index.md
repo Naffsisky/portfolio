@@ -12,6 +12,8 @@ tags:
   - 'Nginx'
   - 'DevOps'
 description: 'Bagian terakhir seri Jenkins CI/CD di home lab: deploy Nginx Ingress Controller, buat Kubernetes manifest untuk aplikasi Next.js, konfigurasi Jenkinsfile, dan jalankan pipeline end-to-end dari GitHub hingga cluster K3s.'
+seoTitle: 'Nginx Ingress, Deploy App & Pipeline CI/CD K3s – Part 3'
+seoDescription: 'Seri terakhir Jenkins CI/CD home lab: install Nginx Ingress Controller, buat Kubernetes manifest Next.js, konfigurasi Jenkinsfile, dan jalankan pipeline end-to-end ke K3s.'
 socialImage: '/blog/jenkins-cicd-k3s-part-3/images/02-app-two-browser.png'
 ---
 

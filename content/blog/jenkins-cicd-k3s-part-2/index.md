@@ -12,6 +12,8 @@ tags:
   - 'CI/CD'
   - 'Jenkins'
 description: 'Panduan setup cluster Kubernetes K3s dengan satu control plane dan tiga worker node, lalu konfigurasi kubectl di Jenkins build agent agar siap menjalankan deployment dari pipeline.'
+seoTitle: 'Setup K3s Cluster: Control Plane & Worker Node – Part 2'
+seoDescription: 'Tutorial deploy cluster Kubernetes K3s dengan satu control plane dan tiga worker node, serta konfigurasi kubectl di Jenkins build agent untuk deployment pipeline.'
 socialImage: ''
 ---
 

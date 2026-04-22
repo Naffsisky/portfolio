@@ -10,6 +10,8 @@ tags:
   - 'Web Development'
   - 'Google Cloud Platform'
 description: 'Membuat Backend service menggunakan Node.js dan membuat Container Image lalu dimasukan ke Artifact Registry, membuat Container file dan mendeploy memakai Cloud Run.'
+seoTitle: 'Deploy Node.js ke Google Cloud Run dengan Docker'
+seoDescription: 'Panduan deploy backend Node.js ke Google Cloud Run: buat Container Image, push ke Artifact Registry, dan deploy service dengan konfigurasi Dockerfile.'
 ---
 
 ## Open API

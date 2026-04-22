@@ -10,6 +10,8 @@ tags:
   - 'Mahasiswa'
   - 'Daily Life'
 description: 'Sharing penglaman mengikuti program Kampus Merdeka Magang Studi Independen Bersertifikat, Bangkit Academy by Google, Goto, and Traveloka.'
+seoTitle: 'Pengalaman Bangkit Academy Cloud Computing 2023 Batch 2'
+seoDescription: 'Sharing pengalaman mengikuti Bangkit Academy Cloud Computing 2023 Batch 2: proses seleksi MSIB, kelas Coursera, Google Cloud Skills Boost, dan tips buat peserta baru.'
 socialImage: '/blog/sharing-bangkit-part-1/images/intro.png'
 ---
 
