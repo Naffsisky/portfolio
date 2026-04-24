@@ -222,3 +222,26 @@
 .marquee-content img {
   margin: 0 10px;
 }
+
+@keyframes marquee-ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-wrapper {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+  animation: marquee-ticker 20s linear infinite;
+}
+
+.ticker-item {
+  background: linear-gradient(to right, #60a5fa, #a78bfa, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0 2.5rem;
+}

@@ -31,7 +31,12 @@ export function getBlogPosts(): (BlogFrontmatter & { slug: string })[] {
       const filePath = path.join(BLOG_DIR, slug, 'index.md')
       const fileContent = fs.readFileSync(filePath, 'utf-8')
       const { data } = matter(fileContent)
-      return { slug, ...(data as BlogFrontmatter) }
+      const post = data as BlogFrontmatter
+      return {
+        slug,
+        ...post,
+        tags: Array.isArray(post.tags) ? post.tags : post.tags != null ? [String(post.tags)] : [],
+      }
     })
     .filter(Boolean) as (BlogFrontmatter & { slug: string })[]
 }

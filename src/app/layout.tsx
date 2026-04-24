@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto_Mono } from "next/font/google";
 import { NextUIProvider } from "@nextui-org/react";
 import Sidebar from "@/components/Sidebar";
+import RunningText from "@/components/RunningText";
 import GlowingCursor from "@/components/Cursor";
 // import Loading from "@/components/Loading";
 import dynamic from "next/dynamic";
@@ -73,13 +74,16 @@ export default function RootLayout({
     <html lang="en">
       <head>{/* <script defer src="https://umami.prinafsika.world/getinfo" data-website-id="b3c5039a-804e-4605-b9fa-84442d2788a5"></script> */}</head>
       <body className={inter.className + ' bg-zinc-900'}>
+        <RunningText />
         <GlowingCursor />
         <Sidebar />
         <Loading />
 
-        <NextUIProvider>
-          <Suspense fallback={null}>{children}</Suspense>
-        </NextUIProvider>
+        <div className="pt-8">
+          <NextUIProvider>
+            <Suspense fallback={null}>{children}</Suspense>
+          </NextUIProvider>
+        </div>
 
         <Suspense fallback={null}>
           <Analytics />

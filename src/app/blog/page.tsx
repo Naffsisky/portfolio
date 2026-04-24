@@ -27,7 +27,7 @@ function BlogPage({ searchParams }: { searchParams?: SearchParams }) {
 
   const filteredPosts = allPosts.filter((post) => {
     const matchesCategory = selectedCategory === ALL_CATEGORIES || post.category === selectedCategory
-    const searchableContent = [post.title, post.description, post.category, ...(post.tags ?? [])].filter(Boolean).join(' ').toLowerCase()
+    const searchableContent = [post.title, post.description, post.category, ...(Array.isArray(post.tags) ? post.tags : [])].filter(Boolean).join(' ').toLowerCase()
     const matchesQuery = normalizedQuery.length === 0 || searchableContent.includes(normalizedQuery)
     return matchesCategory && matchesQuery
   })

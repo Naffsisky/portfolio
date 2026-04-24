@@ -6,6 +6,15 @@ function Experience() {
       <ol className="relative border-s border-gray-200 dark:border-gray-700">
         <li className="mb-10 ms-4">
           <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+          <time className="mb-1 text-sm font-normal leading-none text-blue-500 dark:text-gray-500">August 2025 - March 2026</time>
+          <h2 className="text-lg font-semibold text-white dark:text-white">TOP4 Marketing PTY LTD - Fullstack Web Developer</h2>
+          <h3 className="text-sm font-normal text-indigo-500 dark:text-white">Contract</h3>
+          <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 text-justify">
+            Managed and maintained multiple client websites built on WordPress, Shopify, Laravel, and ReactJS frameworks, ensuring consistent performance and reliability across diverse technology stacks. Administered web hosting infrastructure including cPanel server management, Cloudflare DNS and CDN configuration, and MySQL database performance optimization to support stable and scalable client environments. Monitored website uptime, performance metrics, and security posture across client environments, proactively identifying and resolving issues to maintain high availability. Collaborated closely with clients to translate business needs into technical solutions, contributing across the full web development lifecycle from deployment to ongoing maintenance.
+          </p>
+        </li>
+        <li className="mb-10 ms-4">
+          <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
           <time className="mb-1 text-sm font-normal leading-none text-blue-500 dark:text-gray-500">March 2025 - July 2025</time>
           <h2 className="text-lg font-semibold text-white dark:text-white">CV. Flyhigh Sinergi Indonesia - Fullstack Web Developer</h2>
           <h3 className="text-sm font-normal text-indigo-500 dark:text-white">Internship</h3>

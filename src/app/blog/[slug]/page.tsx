@@ -141,13 +141,15 @@ export default function BlogPost({ params }: Props) {
               li: ({ children }) => <li className="mb-1 text-amber-400">{children}</li>,
               p: ({ children }) => <p className="my-4 text-white">{children}</p>,
               code: (props: any) => {
-                const { inline, children, className } = props as {
-                  inline?: boolean
+                const { node, children, className } = props as {
+                  node?: { tagName?: string; position?: unknown }
                   children: React.ReactNode
                   className?: string
                 }
 
-                if (inline) {
+                const isInline = !className && !String(children ?? '').includes('\n')
+
+                if (isInline) {
                   return <code className="rounded bg-zinc-800 px-1 py-0.5 text-yellow-200">{children}</code>
                 }
 
