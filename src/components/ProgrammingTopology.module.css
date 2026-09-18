@@ -1,0 +1,34 @@
+.editor { position: absolute; top: 12%; left: 6%; width: 88%; height: 44%; border: 1px solid #cbdcf5; border-radius: 8px; overflow: hidden; background: #fbfdff; box-shadow: 0 4px 16px #2463eb08; }
+.editorHeader { display: flex; justify-content: space-between; padding: 1.5cqw 2.5cqw; border-bottom: 1px solid #e1e9f5; background: #f0f5fd; color: #53749e; font: 1.8cqw/1.5 ui-monospace, monospace; }
+.editorHeader > span { display: flex; align-items: center; gap: 1cqw; }
+.editorHeader svg { width: 2.3cqw; height: 2.3cqw; }
+.code { padding: 2cqw 2.5cqw; margin: 0; font: 2.1cqw/1.8 ui-monospace, monospace; color: #385e91; }
+.codeRow { display: flex; gap: 2.5cqw; }
+.lineNumber { color: #91a1b8; user-select: none; }
+.codeLine { display: block; animation: type-code 8s steps(32, end) infinite both; animation-delay: var(--delay); }
+.codeRow:first-child .codeLine { color: #8055ad; }
+.codeRow:nth-child(3) .codeLine { color: #188667; }
+.pipelineLabel { position: absolute; top: 64%; right: 6%; color: #7489a5; font: 1.5cqw/1.6 ui-monospace, monospace; }
+.stages { position: absolute; top: 73.5%; left: 4%; right: 4%; height: 19%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4%; }
+.stage { display: flex; flex-direction: column; justify-content: center; gap: 1.3cqw; padding: 1.5cqw; border: 1px solid #d0dced; border-radius: 6px; background: white; animation: complete-stage 8s linear infinite; animation-delay: var(--delay); }
+.stage strong { display: flex; align-items: center; justify-content: center; gap: 1cqw; color: #455c79; font-size: 2.2cqw; }
+.stage svg { width: 3cqw; height: 3cqw; color: #397bfa; }
+.stage > span { text-align: center; color: #188667; font: 1.6cqw/1.5 ui-monospace, monospace; }
+.stage:last-child > span { border: 1px solid #d7e7fc; border-radius: 3px; background: #eff6ff; color: #4977b7; }
+.packet { stroke: #397bfa; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 9 110; stroke-dashoffset: 10; opacity: 0; animation: pass-code 8s linear infinite; animation-delay: var(--delay); }
+
+@keyframes type-code {
+  0% { clip-path: inset(0 100% 0 0); }
+  12%, 80% { clip-path: inset(0); }
+  90%, 100% { clip-path: inset(0 100% 0 0); }
+}
+@keyframes pass-code {
+  0%, 35% { stroke-dashoffset: 10; opacity: 0; }
+  36% { opacity: 1; }
+  47% { stroke-dashoffset: -95; opacity: 1; }
+  48%, 100% { stroke-dashoffset: -110; opacity: 0; }
+}
+@keyframes complete-stage {
+  0%, 46%, 65%, 100% { border-color: #d0dced; box-shadow: none; }
+  48%, 58% { border-color: #75a4f3; box-shadow: 0 0 0 3px #2463eb0c; }
+}

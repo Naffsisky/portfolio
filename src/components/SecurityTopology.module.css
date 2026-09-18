@@ -1,0 +1,41 @@
+.topology { width: 100%; }
+.trusted, .untrusted { white-space: nowrap; }
+.trusted { left: 30%; }
+.untrusted { left: 70%; color: #b65353; border-color: #edcccc; background: #fffafa; }
+.threatConnection { stroke: #e0b6b6; stroke-width: 1.5; stroke-dasharray: 4 4; }
+.allowedPacket, .blockedPacket, .forwardPacket { stroke: #397bfa; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 9 110; stroke-dashoffset: 10; opacity: 0; animation: arrive 5s linear infinite; }
+.blockedPacket { stroke: #ce6262; }
+.forwardPacket { animation-name: forward; }
+.firewall { animation: inspect 5s linear infinite; }
+.firewall div > span { display: block; }
+.blocked, .allowed { position: absolute; display: flex; align-items: center; gap: 4px; font: 1.45cqw/1.5 ui-monospace, monospace; border-radius: 4px; padding: 3px 5px; }
+.blocked svg, .allowed svg { width: 2cqw; height: 2cqw; }
+.blocked { left: 71%; top: 39%; color: #a34343; border: 1px solid #edcccc; background: #fff5f5; animation: reject 5s linear infinite; }
+.allowed { left: 52%; top: 51%; color: #367254; background: #f0faf4; }
+.workload { padding: 1cqw; animation: receive 5s linear infinite; }
+.threatDot { width: 5px; height: 5px; border-radius: 50%; background: #ce6262; }
+
+@keyframes arrive {
+  0% { stroke-dashoffset: 10; opacity: 0; }
+  5% { opacity: 1; }
+  26% { stroke-dashoffset: -95; opacity: 1; }
+  30%, 100% { stroke-dashoffset: -110; opacity: 0; }
+}
+@keyframes forward {
+  0%, 38% { stroke-dashoffset: 10; opacity: 0; }
+  40% { opacity: 1; }
+  76% { stroke-dashoffset: -95; opacity: 1; }
+  80%, 100% { stroke-dashoffset: -110; opacity: 0; }
+}
+@keyframes inspect {
+  0%, 24%, 50%, 100% { box-shadow: 0 3px 12px #2463eb0c; }
+  30%, 40% { box-shadow: 0 0 0 5px #2463eb12, 0 0 22px #2463eb18; }
+}
+@keyframes reject {
+  0%, 24%, 55%, 100% { box-shadow: none; }
+  30%, 40% { box-shadow: 0 0 0 4px #ce626216; }
+}
+@keyframes receive {
+  0%, 70%, 100% { border-color: #d0dced; box-shadow: none; }
+  78%, 88% { border-color: #75a4f3; box-shadow: 0 0 0 3px #2463eb0c; }
+}

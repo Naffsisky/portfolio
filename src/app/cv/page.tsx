@@ -1,36 +1,22 @@
-'use client'
+import { ArrowUpRight, FileText } from 'lucide-react'
+import styles from '@/app/content.module.css'
 
-import { Button } from '@nextui-org/react'
-import React from 'react'
+const resumeUrl = 'https://is3.cloudhost.id/public-data/Prinafsika-resume-new.pdf'
 
-function Cv() {
-  const buttonDownload = () => {
-    fetch('https://is3.cloudhost.id/public-data/Prinafsika-resume-new.pdf')
-      .then((response) => {
-        response.blob().then((blob) => {
-          const fileURL = window.URL.createObjectURL(blob)
-          let alink = document.createElement('a')
-          alink.href = fileURL
-          alink.download = 'CV-Prinafsika.pdf'
-          alink.click()
-        })
-      })
-      .catch((err) => {
-        alert(`Download Failed!\n${err}`)
-        console.log(err)
-      })
-  }
+export default function Cv() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between lg:p-24 p-6 bg-zinc-900 lg:ml-64">
-      <h2 className="text-3xl font-bold text-purple-500 pb-5">Curriculum Vitae</h2>
-      <iframe src="https://is3.cloudhost.id/public-data/Prinafsika-resume-new.pdf" className="w-full h-[60vh] lg:h-[80vh] rounded-xl border border-purple-500" allowFullScreen title="Resume"></iframe>
-      {/* <div className="pt-5">
-        <Button onClick={buttonDownload} className="text-white p-3 bg-transparent border border-purple-500 rounded-xl">
-          Download
-        </Button>
-      </div> */}
+    <div className={styles.page}>
+      <header className={styles.pageHeader}>
+        <p className={styles.eyebrow}>RÉSUMÉ / THE JOURNEY SO FAR</p>
+        <h1>Experience, at a glance.</h1>
+        <p>Software developer working across DevOps and infrastructure. Cybersecurity and system analyst enthusiast.</p>
+      </header>
+      <div className={styles.actions}>
+        <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className={styles.button}><FileText size={17} /> Open résumé PDF <ArrowUpRight size={16} /></a>
+        <span className="text-sm text-slate-500">Use the PDF viewer to save a copy.</span>
+      </div>
+      <iframe src={resumeUrl} className={styles.resume} title="Prinafsika résumé PDF" />
+      <p className="mt-4 text-sm text-slate-500">Preview not loading? Open the PDF using the button above.</p>
     </div>
   )
 }
-
-export default Cv

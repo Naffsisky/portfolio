@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import dynamic from 'next/dynamic'
+import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
+import CustomImage from '@/components/CustomImage'
+import styles from '@/app/content.module.css'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkBreaks from 'remark-breaks'
@@ -12,7 +15,6 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { notFound } from 'next/navigation'
 import { getBlogPost, getBlogSlugs } from '@/lib/blog'
 
-const CustomImage = dynamic(() => import('@/components/CustomImage'), { ssr: false })
 
 export const revalidate = 3600 // ISR 1 jam
 
@@ -74,9 +76,6 @@ export default function BlogPost({ params }: Props) {
   const { metadata, content } = post
   if (metadata.draft) return notFound()
 
-  // Convert <figure>..</figure> -> sintaks gambar custom
-  const processedContent = content.replace(/<figure>\s*<img\s+src="([^"]+)"\s+alt="([^"]+)">\s*<figcaption>(.*?)<\/figcaption>\s*<\/figure>/g, '![[$1||$2||$3]]')
-
   // JSON-LD: Article
   const articleLd = {
     '@context': 'https://schema.org',
@@ -102,74 +101,30 @@ export default function BlogPost({ params }: Props) {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between lg:p-24 p-7 bg-zinc-900 lg:ml-64">
-      {/* JSON-LD */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
-
-      <article className="prose prose-lg prose-invert max-w-4xl w-full">
-        <h1 className="text-4xl font-bold text-white mb-2">{metadata.title}</h1>
-
-        <p className="text-gray-400 mb-8">
-          {metadata.date}
-          {metadata.category ? <> &nbsp;|&nbsp; {metadata.category}</> : null}
-          {Array.isArray(metadata.tags) && metadata.tags.length > 0 ? <> &nbsp;•&nbsp; {metadata.tags.join(', ')}</> : null}
-        </p>
-
-        {metadata.socialImage ? (
-          <div className="flex justify-center mb-8">
-            <Image src={metadata.socialImage} alt={metadata.title} width={1200} height={630} className="rounded-lg w-full h-auto" priority />
-          </div>
-        ) : null}
-
-        <div className="markdown-content">
+    <div className={styles.page}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd).replace(/</g, '\\u003c') }} />
+      <article className={styles.article}>
+        <Link href="/blog" className={styles.back}><ArrowLeft size={16} /> Back to all articles</Link>
+        <header className={styles.pageHeader}>
+          <p className={styles.eyebrow}>BLOG / {metadata.category || 'NOTES'}</p>
+          <h1>{metadata.title}</h1>
+          <div className={styles.postMeta}><span>Prinafsika</span><span>·</span><time dateTime={metadata.date}>{metadata.date}</time></div>
+          <div className={styles.tags}>{Array.isArray(metadata.tags) && metadata.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+        </header>
+        {metadata.socialImage && (
+          <div className={styles.articleCover}><Image src={metadata.socialImage} alt={metadata.title} width={1200} height={630} priority /></div>
+        )}
+        <div className={styles.markdown}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm, remarkBreaks, [remarkToc, { heading: 'daftar-isi', tight: true }]]}
             rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]]}
             components={{
               img: ({ src, alt }) => <CustomImage src={src || ''} alt={alt || ''} />,
-              h1: ({ children }) => <h1 className="text-3xl font-bold mt-8 mb-4 text-purple-400">{children}</h1>,
-              h2: ({ children }) => <h2 className="text-2xl font-bold mt-6 mb-3 text-purple-300">{children}</h2>,
-              h3: ({ children }) => <h3 className="text-xl font-bold mt-5 mb-2 text-purple-200">{children}</h3>,
-              a: ({ href, children }) => (
-                <a href={href || '#'} className="text-violet-400 hover:text-violet-300 underline">
-                  {children}
-                </a>
-              ),
-              ul: ({ children }) => <ul className="list-disc pl-8 my-4 text-white">{children}</ul>,
-              ol: ({ children }) => <ol className="list-decimal pl-8 my-4 text-white">{children}</ol>,
-              li: ({ children }) => <li className="mb-1 text-amber-400">{children}</li>,
-              p: ({ children }) => <p className="my-4 text-white">{children}</p>,
-              code: (props: any) => {
-                const { node, children, className } = props as {
-                  node?: { tagName?: string; position?: unknown }
-                  children: React.ReactNode
-                  className?: string
-                }
-
-                const isInline = !className && !String(children ?? '').includes('\n')
-
-                if (isInline) {
-                  return <code className="rounded bg-zinc-800 px-1 py-0.5 text-yellow-200">{children}</code>
-                }
-
-                return <code className={`block overflow-x-auto rounded-md bg-zinc-800 p-4 text-yellow-200 ${className || ''}`.trim()}>{children}</code>
-              },
-              pre: ({ children }) => <pre className="bg-zinc-800 p-0 rounded-md overflow-x-auto my-4">{children}</pre>,
-              blockquote: ({ children }) => <blockquote className="border-l-4 border-gray-500 pl-4 italic my-4">{children}</blockquote>,
-              table: ({ children }) => (
-                <div className="overflow-x-auto my-6">
-                  <table className="w-full border-collapse text-white">{children}</table>
-                </div>
-              ),
-              thead: ({ children }) => <thead className="bg-zinc-700">{children}</thead>,
-              tbody: ({ children }) => <tbody className="divide-y divide-zinc-600">{children}</tbody>,
-              tr: ({ children }) => <tr className="border-b border-zinc-600">{children}</tr>,
-              th: ({ children }) => <th className="px-4 py-2 text-left text-purple-300 font-semibold whitespace-nowrap">{children}</th>,
-              td: ({ children }) => <td className="px-4 py-2 text-white">{children}</td>,
+              table: ({ children }) => <div className={styles.tableScroll}><table>{children}</table></div>,
             }}
           >
-            {processedContent}
+            {content}
           </ReactMarkdown>
         </div>
       </article>

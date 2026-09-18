@@ -6,12 +6,13 @@
     <title>Nonton Webinap</title>
     <style>
       :root {
-        --bg: #0f1115;
-        --panel: #151925;
-        --muted: #8b93a7;
-        --accent: #4f7cff;
-        --text: #e6eaf2;
-        --border: #23283a;
+        --bg: #fcfcfd;
+        --panel: #ffffff;
+        --muted: #627084;
+        --accent: #2463eb;
+        --text: #182438;
+        --border: #e0e6ed;
+        color-scheme: light;
       }
       * {
         box-sizing: border-box;
@@ -25,7 +26,12 @@
       .app {
         display: grid;
         grid-template-columns: 320px 1fr;
-        min-height: 100vh;
+        min-height: calc(100vh - 95px);
+        max-width: 1200px;
+        margin: 30px auto;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
       }
       .sidebar {
         background: var(--panel);
@@ -51,7 +57,7 @@
         padding: 8px 10px;
         border-radius: 10px;
         border: 1px solid var(--border);
-        background: #0e111a;
+        background: var(--bg);
         color: var(--text);
       }
       .search {
@@ -62,7 +68,7 @@
         padding: 10px 12px;
         border-radius: 10px;
         border: 1px solid var(--border);
-        background: #0e111a;
+        background: var(--bg);
         color: var(--text);
       }
       .list {
@@ -79,12 +85,12 @@
         border: 1px solid transparent;
       }
       .item:hover {
-        background: #101421;
+        background: #f0f5fc;
         border-color: var(--border);
       }
       .item.active {
-        background: #101a2e;
-        border-color: #28407a;
+        background: #edf4ff;
+        border-color: #aac6f8;
       }
       .idx {
         opacity: 0.7;
@@ -125,11 +131,12 @@
         align-items: center;
         padding: 12px;
         border-top: 1px solid var(--border);
-        background: linear-gradient(#10131b, #0f1218);
+        background: #f0f5fc;
+        flex-wrap: wrap;
       }
       .controls button,
       .controls select {
-        background: #101421;
+        background: white;
         border: 1px solid var(--border);
         color: var(--text);
         padding: 8px 12px;
@@ -145,6 +152,32 @@
         font-size: 12px;
         border-top: 1px solid var(--border);
       }
+      html { scroll-padding-top: 120px; }
+      .site-header { position: sticky; top: 0; z-index: 50; background: #fcfcfdf2; backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+      .site-header-inner { width: min(1200px, calc(100% - 96px)); min-height: 76px; margin: auto; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+      .site-menu { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; }
+      .menu-toggle { display: none; }
+      .menu-toggle[aria-expanded="false"] .close-icon, .menu-toggle[aria-expanded="true"] .menu-icon { display: none; }
+      .site-header nav { display: flex; align-items: center; height: 76px; gap: 33px; }
+      .site-header nav a { display: flex; align-items: center; height: 100%; color: var(--muted); text-decoration: none; font-size: 13px; border-bottom: 2px solid transparent; }
+      .site-header nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+      .site-resume { padding: 9px 16px; border: 1px solid var(--border); border-radius: 7px; color: var(--text); text-decoration: none; font-size: 12px; font-weight: 600; white-space: nowrap; }
+      a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+      #baseShow { overflow-wrap: anywhere; }
+      @media (max-width: 1296px) { .app { margin-inline: 24px; } }
+      @media (max-width: 1100px) { .site-header-inner { width: calc(100% - 64px); } }
+      @media (max-width: 850px) {
+        .site-header-inner { min-height: 68px; flex-wrap: wrap; justify-content: flex-end; gap: 0; padding-block: 12px; }
+        .menu-toggle { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 7px; color: var(--text); background: white; cursor: pointer; }
+        .site-menu { display: none; flex-direction: column; align-items: stretch; gap: 12px; padding-block: 12px; max-height: calc(100dvh - 92px); overflow-y: auto; }
+        .menu-toggle[aria-expanded="true"] + .site-menu { display: flex; }
+        .site-header nav { height: auto; flex-direction: column; align-items: stretch; gap: 0; }
+        .site-header nav a { min-height: 44px; padding: 10px 6px; }
+        .site-resume { display: flex; align-items: center; justify-content: center; min-height: 44px; }
+      }
+      @media (max-width: 600px) {
+        .site-header-inner { width: calc(100% - 40px); }
+      }
       @media (max-width: 900px) {
         .app {
           grid-template-columns: 1fr;
@@ -155,10 +188,22 @@
         .player {
           order: 1;
         }
+        .app { margin-inline: 20px; }
       }
     </style>
   </head>
   <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="header-menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="menu-icon" d="M4 6h16M4 12h16M4 18h16" /><path class="close-icon" d="m6 6 12 12M6 18 18 6" /></svg>
+        </button>
+        <div class="site-menu" id="header-menu">
+          <nav aria-label="Main navigation"><a href="/">Home</a><a href="/about">About</a><a href="/projects">Projects</a><a href="/blog">Blog</a><a href="/certificates">Certificates</a></nav>
+          <a class="site-resume" href="/cv">View résumé ↗</a>
+        </div>
+      </div>
+    </header>
     <div class="app">
       <aside class="sidebar">
         <div class="brand">Playlist Drama</div>
@@ -169,7 +214,7 @@
           </label>
           <div style="font-size: 12px; color: var(--muted)">Base: <span id="baseShow"></span></div>
         </div>
-        <div class="search"><input id="q" placeholder="Cari judul episode..." /></div>
+        <div class="search"><input id="q" aria-label="Cari episode" placeholder="Cari judul episode..." /></div>
         <div class="list" id="list"></div>
         <div class="footer">⌨️ K/Space: Play/Pause • J/L: ±10s • N/P: Next/Prev • [ ]: Speed</div>
       </aside>
@@ -199,6 +244,21 @@
     </div>
 
     <script>
+      const menuToggle = document.querySelector('.menu-toggle')
+      function setMenuOpen(open) {
+        menuToggle.setAttribute('aria-expanded', String(open))
+        menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
+      }
+      menuToggle.addEventListener('click', () => setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true'))
+      document.querySelector('.site-header').addEventListener('keydown', event => {
+        if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+          setMenuOpen(false)
+          menuToggle.focus()
+        }
+      })
+      document.querySelector('.site-menu').addEventListener('click', event => {
+        if (event.target.closest('a')) setMenuOpen(false)
+      })
       // ====== KONFIGURASI SERI KAMU ======
       const SERIES = [
         {
@@ -340,7 +400,7 @@
       video.addEventListener('play', startProgressTimer)
       video.addEventListener('pause', startProgressTimer)
       window.addEventListener('keydown', (e) => {
-        if (e.target.matches('input, textarea')) return
+        if (e.target.matches('input, textarea, button, select, a')) return
         const k = e.key.toLowerCase()
         if (k === 'k' || e.code === 'Space') {
           e.preventDefault()

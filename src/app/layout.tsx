@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { Roboto_Mono } from "next/font/google";
 import { NextUIProvider } from "@nextui-org/react";
-import Sidebar from "@/components/Sidebar";
-import RunningText from "@/components/RunningText";
-import GlowingCursor from "@/components/Cursor";
+import SiteFrame from "@/components/SiteFrame";
 // import Loading from "@/components/Loading";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
@@ -11,7 +8,6 @@ import "./globals.css";
 import Analytics from '@/components/Analytics';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
-const inter = Roboto_Mono({ subsets: ["latin"] });
 const Loading = dynamic(() => import("@/components/Loading"), { ssr: false });
 
 export const metadata: Metadata = {
@@ -43,6 +39,10 @@ export const metadata: Metadata = {
     "docker",
     "github actions",
     "software engineer",
+    "software developer",
+    "DevOps",
+    "cybersecurity enthusiast",
+    "system analyst enthusiast",
     "cloud solutions architect",
     "web development",
     "programming",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   creator: "Prinafsika",
   publisher: "Prinafsika",
   description:
-    "This is my portfolio, made with Next.js, Tailwind CSS, and deployed using Docker container integrate with Github actions. In this portfolio, I showcase my projects and skills. I hope you find something that interests you. Thank you!",
+    "Prinafsika — software developer working across DevOps and cloud infrastructure, and a cybersecurity and system analyst enthusiast. Explore projects, experience, and technical notes.",
   robots: { index: true, follow: true },
 };
 
@@ -71,19 +71,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <head>{/* <script defer src="https://umami.prinafsika.world/getinfo" data-website-id="b3c5039a-804e-4605-b9fa-84442d2788a5"></script> */}</head>
-      <body className={inter.className + ' bg-zinc-900'}>
-        <RunningText />
-        <GlowingCursor />
-        <Sidebar />
+      <body className="bg-[#fcfcfd] text-slate-800">
         <Loading />
 
-        <div className="pt-8">
+        <SiteFrame>
           <NextUIProvider>
             <Suspense fallback={null}>{children}</Suspense>
           </NextUIProvider>
-        </div>
+        </SiteFrame>
 
         <Suspense fallback={null}>
           <Analytics />

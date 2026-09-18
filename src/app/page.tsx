@@ -1,135 +1,114 @@
-'use client'
-
-import { Sparkles } from '@/components/Sparkles'
-import Typewriter from 'typewriter-effect'
-import Photos from '@/components/Photos'
-import Marquee from '@/components/Marquee'
-import Experience from '@/components/Experience'
-import TechLogo from '@/components/TechLogo'
-import Education from '@/components/Education'
-import Diagram from '@/components/Diagram'
 import Link from 'next/link'
-import Image from 'next/image'
+import { ArrowDown, ArrowRight, ArrowUpRight, Cloud, Code2, GitBranch, Layers3, ShieldCheck, Workflow, Terminal, AppWindow, Database, LockKeyhole, FileSearch, ListChecks } from 'lucide-react'
+import { SiDocker, SiGithub, SiGooglecloud, SiKubernetes, SiLinux } from 'react-icons/si'
+import CloudTopology from '@/components/CloudTopology'
+import { projects } from '@/app/projects/data/projects'
+import styles from './home.module.css'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-zinc-900 lg:ml-64">
-      <section className="min-h-screen flex flex-col items-center justify-center">
-        <div className="flex flex-col items-center justify-between border-2 rounded-2xl p-10 shadow-2xl shadow-indigo-500">
-          <div className="lg:text-3xl text-xl font-bold text-purple-500" id="typewriter">
-            <Typewriter
-              onInit={(typewriter) => {
-                typewriter.typeString('Hello World!').pauseFor(3000).deleteAll().typeString('My name is Prinafsika').pauseFor(3000).deleteAll().start()
-              }}
-              options={{
-                autoStart: true,
-                loop: true,
-              }}
-            />{' '}
+    <>
+        <section className={styles.hero} aria-labelledby="hero-title">
+          <div className={styles.heroCopy}>
+            <div className={styles.eyebrow}><span className={styles.statusDot} /> SOFTWARE DEVELOPER · DEVOPS & INFRASTRUCTURE</div>
+            <p className={styles.intro}>Hi, I&apos;m Prinafsika <span aria-hidden="true">✳</span></p>
+            <h1 id="hero-title">Good code.<br />Great <span>infrastructure.</span></h1>
+            <p className={styles.heroDescription}>I develop software and the infrastructure behind it. From thoughtful applications to reliable deployments—with a growing interest in cybersecurity and system analysis.</p>
+            <div className={styles.heroActions}>
+              <Link href="/projects" className={styles.primaryButton}>Explore my work <ArrowUpRight size={18} /></Link>
+              <a href="https://github.com/Naffsisky" target="_blank" rel="noopener noreferrer" className={styles.secondaryButton}><SiGithub size={19} /> GitHub <ArrowUpRight size={15} /></a>
+            </div>
+            <div className={styles.heroNote}><span className={styles.mono}>01 —</span> Building. Deploying. Always learning.</div>
           </div>
+          <CloudTopology />
+          <a href="#expertise" className={styles.scrollHint}><ArrowDown size={14} /> A little more about what I do</a>
+        </section>
 
-          <div className="overflow-hidden">
-            <div className="mx-auto mt-32 max-w-2xl">
-              <div className="text-center text-3xl text-white">
-                <span className="text-indigo-200">I&apos;m a</span> <span className="text-indigo-500">Software Engineer</span>
-                <br />
-                <span>and a</span>{' '}
-                <span className="text-indigo-500">
-                  <span className="text-[#8350e8]">Cloud Solutions Architect.</span>
-                </span>
+        <div className={styles.stackBar} aria-label="Technology focus">
+          <span className={styles.stackLabel}>TOOLS OF THE TRADE</span>
+          <span><SiDocker /> Docker</span><span><SiKubernetes /> Kubernetes</span><span><SiGooglecloud /> Google Cloud</span><span><SiLinux /> Linux</span><span><GitBranch /> CI/CD</span>
+        </div>
+
+        <section id="expertise" className={styles.section} aria-labelledby="expertise-title">
+          <div className={styles.sectionHeading}>
+            <div><p className={styles.eyebrow}>01 / WHAT I DO</p><h2 id="expertise-title">Built with purpose. Ready to scale.</h2></div>
+            <p>Developing software. Running infrastructure.<br />Exploring security and system analysis.</p>
+          </div>
+          <div className={styles.expertiseGrid}>
+            <article className={styles.expertiseCard}><span className={styles.cardIcon}><Code2 /></span><span className={styles.cardNumber}>01</span><h3>Software development</h3><p>Thoughtful interfaces, dependable APIs, and full-stack applications that solve real problems.</p><div className={styles.tags}><span>Next.js</span><span>Laravel</span><span>TypeScript</span></div></article>
+            <article className={styles.expertiseCard}><span className={styles.cardIcon}><Cloud /></span><span className={styles.cardNumber}>02</span><h3>Cloud & infrastructure</h3><p>From virtual machines to containerized workloads. Infrastructure built for reliability and room to grow.</p><div className={styles.tags}><span>Google Cloud</span><span>Docker</span><span>Kubernetes</span></div></article>
+            <article className={styles.expertiseCard}><span className={styles.cardIcon}><GitBranch /></span><span className={styles.cardNumber}>03</span><h3>DevOps & automation</h3><p>Repeatable builds, automated deployments, and less manual work between a commit and production.</p><div className={styles.tags}><span>Jenkins</span><span>GitHub Actions</span><span>Linux</span></div></article>
+          </div>
+        </section>
+
+        <section id="focus" className={styles.section} aria-labelledby="focus-title">
+          <div className={styles.sectionHeading}>
+            <div><p className={styles.eyebrow}>02 / BUILD · SECURE · UNDERSTAND</p><h2 id="focus-title">More than infrastructure.</h2></div>
+            <p>Software development at the core.<br />Security and system analysis on the horizon.</p>
+          </div>
+          <div className={styles.focusGrid}>
+            <article className={styles.focusCard} data-focus="software">
+              <div className={styles.focusVisual}>
+                <span className={styles.focusLabel}>01 / BUILDING</span>
+                <div className={styles.focusFlow} aria-hidden="true"><span><Code2 /></span><ArrowRight /><span><Database /></span><ArrowRight /><span><AppWindow /></span></div>
+                <span className={styles.focusCaption}>idea → code → application</span>
               </div>
-            </div>
-
-            <div className="relative -mt-32 h-96 overflow-hidden [mask-image:radial-gradient(50%_50%,white,transparent)] before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom_center,#8350e8,transparent_70%)] before:opacity-40 after:absolute after:-left-1/2 after:top-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[100%] after:border-t after:border-[#7876c566] after:bg-zinc-900">
-              <Sparkles density={1200} className="absolute inset-x-0 bottom-0 h-full w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]" />
-            </div>
+              <div className={styles.focusBody}>
+                <h3>Software developer</h3>
+                <p>I turn ideas into working products, connecting thoughtful interfaces with APIs, databases, and the logic behind them.</p>
+                <div className={styles.tags}><span>Full-stack applications</span><span>API development</span><span>Databases</span></div>
+                <Link href="/projects" className={styles.textLink}>Explore my software projects <ArrowUpRight size={16} /></Link>
+              </div>
+            </article>
+            <article className={styles.focusCard} data-focus="security">
+              <div className={styles.focusVisual}>
+                <span className={styles.focusLabel}>02 / EXPLORING</span>
+                <div className={styles.focusFlow} aria-hidden="true"><span><AppWindow /></span><ArrowRight /><span><ShieldCheck /></span><ArrowRight /><span><LockKeyhole /></span></div>
+                <span className={styles.focusCaption}>understand → protect → improve</span>
+              </div>
+              <div className={styles.focusBody}>
+                <h3>Cybersecurity enthusiast</h3>
+                <p>Learning how systems can fail, how to recognize threats, and how secure development and defensive practices can make a difference.</p>
+                <div className={styles.tags}><span>Application security</span><span>Blue team</span><span>Secure configuration</span></div>
+                <Link href="/blog/hashicorp-vault-setup" className={styles.textLink}>Read my notes on secrets management <ArrowUpRight size={16} /></Link>
+              </div>
+            </article>
+            <article className={styles.focusCard} data-focus="analysis">
+              <div className={styles.focusVisual}>
+                <span className={styles.focusLabel}>03 / EXPLORING</span>
+                <div className={styles.focusFlow} aria-hidden="true"><span><FileSearch /></span><ArrowRight /><span><Workflow /></span><ArrowRight /><span><ListChecks /></span></div>
+                <span className={styles.focusCaption}>requirements → process → solution</span>
+              </div>
+              <div className={styles.focusBody}>
+                <h3>System analyst enthusiast</h3>
+                <p>Exploring the why before the how: understanding user needs, mapping business processes, and translating them into clearer system designs.</p>
+                <div className={styles.tags}><span>Requirements analysis</span><span>Process modeling</span><span>System design</span></div>
+                <Link href="/about#personal-title" className={styles.textLink}>Discover what I’m learning <ArrowUpRight size={16} /></Link>
+              </div>
+            </article>
           </div>
-        </div>
-      </section>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="18181B"
-          fillOpacity="1"
-          d="M0,320L40,288C80,256,160,192,240,138.7C320,85,400,43,480,69.3C560,96,640,192,720,202.7C800,213,880,139,960,138.7C1040,139,1120,213,1200,218.7C1280,224,1360,160,1400,128L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
-        ></path>
-      </svg>
+        </section>
 
-      <section className="lg:px-20">
-        <div className="flex flex-col justify-center items-center pb-5">
-          <span className="absolute py-4 flex border bg-gradient-to-r blur-xl from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-5xl box-content font-extrabold text-transparent text-center select-none">Introduction</span>
-          <h1 className="py-4 justify-center flex bg-gradient-to-r items-center from-blue-500 via-teal-500 to-pink-500 bg-clip-text text-5xl font-extrabold text-transparent text-center select-auto">Introduction</h1>
-        </div>
-        <div className="border-2 border-blue-500 rounded-lg bg-slate-900">
-          <div className="p-3">
-            <h3 className="text-2xl font-bold text-indigo-500 text-center">SUMMARY</h3>
-            <p className="text-white text-justify py-3">
-              As a Computer Science graduate from National Veteran Development University East Java, I specialize in software engineering, cloud computing, and system administration. Passionate about designing, deploying, and managing
-              scalable software solutions and cloud-based infrastructure, I’m committed to delivering efficient, reliable, and secure systems.
-            </p>
+        <section className={styles.workSection} aria-labelledby="work-title">
+          <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>03 / SELECTED WORK</p><h2 id="work-title">A few things I&apos;ve shipped.</h2></div><Link href="/projects" className={styles.textLink}>All projects <ArrowUpRight size={17} /></Link></div>
+          <div className={styles.projectGrid}>
+            {projects.filter(project => ['portainer', 'jenkins', 'portfolio'].includes(project.slug)).map(project => (
+              <Link key={project.id} href={`/projects/${project.slug}`} className={styles.projectCard}>
+                <div className={styles.projectVisual} data-project={project.slug} aria-hidden="true">
+                  {project.slug === 'portainer' ? <><SiDocker className={styles.projectLogo} /><span>container / management</span><div className={styles.miniContainers}><i /><i /><i /><i /></div></> : project.slug === 'jenkins' ? <><GitBranch className={styles.projectLogo} /><span>commit → build → deploy</span><div className={styles.pipeline}><i /><b /><i /><b /><i /></div></> : <><Terminal className={styles.projectLogo} /><span>~/prinafsika/portfolio</span><div className={styles.codePreview}><i /><i /><i /></div></>}
+                </div>
+                <div className={styles.projectBody}><div className={styles.projectTitle}><h3>{project.name}</h3><ArrowUpRight size={20} /></div><p>{project.slug === 'portainer' ? 'A simpler way to manage Docker containers on a VPS.' : project.slug === 'jenkins' ? 'Automating the journey from source code to deployment.' : 'My personal corner of the web, built with Next.js and Docker.'}</p><div className={styles.tags}>{project.tech_stack?.slice(0, 3).map(tech => <span key={tech}>{tech}</span>)}</div></div>
+              </Link>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="lg:px-20">
-        <div className="py-5">
-          <h3 className="text-2xl font-bold text-indigo-500 text-center pb-5">EXPERIENCE</h3>
-          <div className="px-3">
-            <Experience />
-          </div>
-        </div>
-      </section>
+        <section className={styles.aboutSection} aria-labelledby="about-title">
+          <div><p className={styles.eyebrow}>04 / THE PERSON BEHIND THE TERMINAL</p><h2 id="about-title">Curiosity is my<br />favorite dependency.</h2><p>I&apos;m a Computer Science graduate from UPN Veteran Jawa Timur, working as a software developer across web applications, DevOps, and infrastructure. I’m also a cybersecurity and system analyst enthusiast, curious about both how systems work and how to make them safer and more useful.</p><Link href="/about" className={styles.textLink}>More about me <ArrowRight size={17} /></Link></div>
+          <div className={styles.notes}><div className={styles.notesHeading}><Layers3 size={19} /><span>Notes from the homelab</span><Link href="/blog" aria-label="Read all blog posts"><ArrowUpRight size={19} /></Link></div><Link href="/blog/jenkins-cicd-k3s-part-1"><span className={styles.mono}>KUBERNETES · CI/CD</span><h3>Building a Jenkins pipeline for a Kubernetes homelab <ArrowUpRight size={17} /></h3></Link><Link href="/blog/load-balancing-gcp"><span className={styles.mono}>GOOGLE CLOUD · NETWORKING</span><h3>Distributing traffic with Google Cloud Load Balancing <ArrowUpRight size={17} /></h3></Link></div>
+        </section>
 
-      <section className="flex flex-col items-center justify-between py-5 px-3">
-        <h2 className="text-2xl font-bold text-indigo-500 pb-2">EDUCATION</h2>
-        <Education />
-      </section>
-
-      <section className="flex flex-col items-center justify-between py-5 px-3">
-        <h2 className="text-2xl font-bold text-indigo-500 pb-2">GALLERY</h2>
-        <p className="text-sm text-white pb-5">Swipe left!</p>
-        <Photos />
-      </section>
-
-      <section className="flex flex-col items-center justify-between py-5 px-3">
-        <h2 className="text-2xl font-bold text-indigo-500 pb-5">LEARNING COMPANY</h2>
-        <Marquee />
-      </section>
-
-      <section className="flex flex-col items-center justify-between py-5 px-3">
-        <h2 className="text-2xl font-bold text-indigo-500 pb-5">TECH STACK</h2>
-        <TechLogo />
-      </section>
-
-      <section className="lg:px-20 pb-5">
-        <div className="border-2 border-blue-500 shadow-blue-500 shadow-lg rounded-lg bg-slate-900">
-          <div className="py-3 flex flex-col items-center justify-between">
-            <Link href={'/projects'} className="text-2xl font-bold text-indigo-500 pb-3">
-              Data from <span className="text-purple-500 underline">Projects</span>
-            </Link>
-            <Diagram />
-          </div>
-        </div>
-      </section>
-
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="18181B"
-          fillOpacity="1"
-          d="M0,64L48,53.3C96,43,192,21,288,21.3C384,21,480,43,576,69.3C672,96,768,128,864,128C960,128,1056,96,1152,69.3C1248,43,1344,21,1392,10.7L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-        ></path>
-      </svg>
-      <section className="bg-black pb-10">
-        <div className="flex flex-col justify-center items-center">
-          <h1 className="text-xl text-zinc-500">This website made with</h1>
-
-          <div className="flex gap-3 py-5">
-            <img alt="typescript" src="https://skillicons.dev/icons?i=typescript" className="h-10 w-10 rounded-full" />
-            <img alt="nextjs" src="https://skillicons.dev/icons?i=nextjs" className="h-10 w-10 rounded-full" />
-            <img alt="tailwind" src="https://skillicons.dev/icons?i=tailwind" className="h-10 w-10 rounded-full" />
-            <img alt="docker" src="https://skillicons.dev/icons?i=docker" className="h-10 w-10 rounded-full" />
-          </div>
-        </div>
-      </section>
-    </main>
+        <section className={styles.contact}><div><p className={styles.eyebrow}>LET&apos;S CONNECT</p><h2>Have something in mind?<br /><span>Let&apos;s build it together.</span></h2></div><a href="https://linkedin.com/in/prinafsika/" target="_blank" rel="noopener noreferrer" className={styles.primaryButton}>Say hello on LinkedIn <ArrowUpRight size={18} /></a></section>
+    </>
   )
 }
