@@ -13,6 +13,18 @@ const details = [
   { title: 'Currently exploring', subtitle: 'There’s always something new to learn', icon: Telescope, topic: 'learning', content: 'Next.js, React, databases, cloud infrastructure, and DevOps. I’m also learning about cybersecurity, requirements analysis, business processes, and system design.', tags: ['Software development', 'Cybersecurity', 'System analysis'] },
 ]
 
+const galleryPhotos = [
+  { src: '/images/profile/1.png', alt: 'A moment from Prinafsika’s journey, photo 1' },
+  { src: '/images/profile/2.png', alt: 'A moment from Prinafsika’s journey, photo 2' },
+  { src: '/images/profile/3.png', alt: 'A moment from Prinafsika’s journey, photo 3' },
+  { src: '/images/profile/6.png', alt: 'A moment from Prinafsika’s journey, photo 4' },
+  { src: '/images/profile/5.png', alt: 'A moment from Prinafsika’s journey, photo 5' },
+  { src: '/images/profile/4.png', alt: 'A moment from Prinafsika’s journey, photo 6' },
+  { src: 'https://is3.cloudhost.id/public-data/project-images/DevFest-2026.jpg', alt: 'DevFest 2026 workshop session', position: 'center 35%' },
+  { src: 'https://is3.cloudhost.id/public-data/project-images/Tim-Gagas-2026.jpg', alt: 'Gagas team group photo, 2026', position: 'center 30%' },
+  { src: 'https://is3.cloudhost.id/public-data/project-images/Event-Pizza-2026.jpg', alt: 'Pizza night team gathering, 2026', position: 'center 40%' },
+]
+
 export default function About() {
   return (
     <div className={styles.page}>
@@ -71,7 +83,7 @@ export default function About() {
       </section>
       <section className={styles.section} aria-labelledby="gallery-title">
         <h2 id="gallery-title">Beyond the code.</h2>
-        <div className={styles.gallery}>{[1, 2, 3, 6, 5, 4].map((photo, index) => <Image key={photo} src={`/images/profile/${photo}.png`} alt={`A moment from Prinafsika’s journey, photo ${index + 1}`} width={400} height={400} />)}</div>
+        <div className={styles.gallery}>{galleryPhotos.map(photo => <Image key={photo.src} src={photo.src} alt={photo.alt} width={400} height={400} style={photo.position ? { objectPosition: photo.position } : undefined} />)}</div>
       </section>
     </div>
   )
