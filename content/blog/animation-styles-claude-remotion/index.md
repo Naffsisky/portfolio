@@ -13,6 +13,7 @@ tags:
 description: 'Daripada prompt "bikin animasi keren", lebih efektif memberi Claude resep gaya yang spesifik: warna dengan kode hex, font gratis, cara bergerak, dan daftar hal yang justru merusak hasilnya. Ini rangkuman 30 gaya animasi plus cara memakainya di Claude Code dan Remotion.'
 seoTitle: 'Animation Styles dengan Claude + Remotion: 30 Gaya Siap Pakai'
 seoDescription: 'Panduan membuat animasi video dengan Claude Code dan Remotion: cara memakai kartu resep gaya, kategori gaya yang tersedia, dan daftar larangan supaya hasilnya tidak terlihat AI-made.'
+socialImage: 'https://is3.cloudhost.id/public-data/project-images/blog/animation-styles-grid.gif'
 ---
 
 ## Kenapa prompt "bikin animasi keren" gagal
@@ -29,6 +30,8 @@ Pendekatan "kartu resep" menyelesaikan ini. Setiap gaya dijelaskan lewat empat h
 - **Prompt siap tempel** — tinggal ganti `[YOUR WORDS]`.
 
 > Artikel ini merangkum halaman *Animation styles you can build with Claude* oleh **Shaan Johari (@viashaan)**, dipublikasikan 9 Juli 2026. Semua gaya, kategori, dan daftar larangan berasal dari sana.
+
+![Kisi 30 gaya animasi yang bisa dibuat dengan Claude|Setiap kotak adalah satu gaya dengan resepnya sendiri.](https://is3.cloudhost.id/public-data/project-images/blog/animation-styles-grid.gif)
 
 ---
 

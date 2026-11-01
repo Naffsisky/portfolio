@@ -13,6 +13,7 @@ tags:
 description: 'Kebanyakan orang langsung pakai model termahal untuk semua tugas. Padahal ada tujuh pola routing yang terbukti menurunkan biaya 35–65% tanpa menurunkan kualitas hasil. Ini rangkuman playbook-nya, lengkap dengan cara menerapkannya di Claude Code dan Codex.'
 seoTitle: 'Model Routing Playbook: Hemat Biaya AI Coding Tanpa Turun Kualitas'
 seoDescription: 'Panduan model routing untuk AI coding assistant: 7 pola routing (effort, tier, rules, cascade, advisor, auto, trajectory), angka nyata penghematan, dan batasan yang perlu diwaspadai.'
+socialImage: 'https://is3.cloudhost.id/public-data/project-images/blog/model-routing-cover.png'
 ---
 
 ## Kenapa topik ini penting
@@ -24,6 +25,8 @@ Menariknya, sebagian besar tugas tidak butuh itu. Menulis dokumentasi, memperbai
 Artikel ini merangkum *Model Routing Playbook* dari **@donimas (AI LEVELS)**, yang mengumpulkan tujuh pola routing beserta bukti dari dokumentasi resmi, tulisan produksi, dan paper. Saya tulis ulang dalam bahasa praktis, plus catatan bagian mana yang realistis dipakai sehari-hari.
 
 > Semua angka di artikel ini berasal dari playbook tersebut (dicek 5 Oktober 2026). Harga dan kemampuan model berubah cepat — perlakukan sebagai indikasi, bukan janji.
+
+![Ilustrasi Model Routing Playbook: satu router bercabang ke banyak jalur model|Satu request masuk, banyak kemungkinan rute keluar.](https://is3.cloudhost.id/public-data/project-images/blog/model-routing-cover.png)
 
 ---
 

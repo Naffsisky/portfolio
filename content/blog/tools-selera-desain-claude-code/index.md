@@ -13,6 +13,7 @@ tags:
 description: 'Hasil dari Claude Code sering kelihatan "AI banget": gradasi ungu, tiga kartu kembar, emoji di mana-mana. Lima tools ini memperbaiki itu — dari skill selera desain sampai Claude yang bisa membuka browser sendiri untuk mengecek hasil kerjanya.'
 seoTitle: '5 Tools Biar Claude Code Punya Selera Desain'
 seoDescription: 'Daftar lengkap 5 tools untuk memperbaiki selera desain Claude Code: Taste Skill, Web Design Guidelines, DESIGN.md, screenshot jadi kode, dan Playwright CLI. Lengkap dengan perintah install.'
+socialImage: 'https://is3.cloudhost.id/public-data/project-images/blog/5-tools-selera-desain.png'
 ---
 
 ## Masalahnya bukan model, tapi selera
@@ -22,6 +23,8 @@ Claude Code sudah cukup pintar menulis komponen React. Yang sering kurang adalah
 Solusinya bukan model yang lebih besar, tapi memberi konteks desain yang jelas. Lima tools berikut melakukan itu. Semuanya bisa dipasang dalam **±15 menit**.
 
 > Rangkuman ini diadaptasi dari panduan "5 Tools Biar Claude Code Punya Selera Desain" oleh Aksa (dicek 19 Oktober 2026). Perintah dan link bisa berubah — selalu ikuti dokumentasi resminya.
+
+![Lima tools untuk memperbaiki selera desain Claude Code|Taste Skill, Web Design Guidelines, DESIGN.md, screenshot jadi kode, dan Playwright CLI.](https://is3.cloudhost.id/public-data/project-images/blog/5-tools-selera-desain.png)
 
 ---
 
