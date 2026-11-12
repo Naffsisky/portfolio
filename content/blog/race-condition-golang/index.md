@@ -367,4 +367,6 @@ Karena itu, `-race` yang bersih belum tentu berarti logika bisnis bebas race. Te
 - [ ] Pahami perbedaan data race dan race condition pada logika bisnis.
 - [ ] Dokumentasikan siapa pemilik data dan siapa yang boleh menulis.
 
+## Kesimpulan
+
 Race condition tidak hilang hanya karena kode "kelihatan jalan". Ia menunggu momen yang tepat untuk muncul. Race detector dan test yang agresif adalah cara termurah untuk menemukannya sebelum pengguna menemukannya.

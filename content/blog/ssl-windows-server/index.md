@@ -292,4 +292,6 @@ Untuk wildcard certificate, satu sertifikat bisa dipakai beberapa subdomain — 
 - [ ] Scheduled task renewal win-acme berstatus **Ready**.
 - [ ] Tidak ada mixed content di halaman.
 
+## Kesimpulan
+
 Kalau semua poin di atas terpenuhi, website di Windows Server kamu sudah berjalan dengan HTTPS yang terenkripsi dan diperbarui otomatis. Tidak ada biaya sertifikat, dan tidak ada langkah manual yang perlu diulang setiap tiga bulan.

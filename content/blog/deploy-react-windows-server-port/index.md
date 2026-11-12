@@ -262,4 +262,6 @@ Beberapa catatan produksi:
 - [ ] Izin baca `IIS_IUSRS` diberikan ke folder situs.
 - [ ] Proses build ulang dan deploy ulang sudah dicatat.
 
+## Kesimpulan
+
 Dengan susunan ini, React frontend-only berjalan sebagai situs statis biasa di IIS. Tidak ada Node.js di server, tidak ada proses yang perlu dijaga tetap hidup, dan aplikasi bisa diakses lewat port yang kamu tentukan sendiri.

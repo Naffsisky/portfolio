@@ -465,4 +465,6 @@ Ingat: setelah `config:cache`, perubahan `.env` tidak akan terbaca sampai cache 
 - [ ] `queue:failed` dan `queue:monitor` bersih.
 - [ ] `queue:restart` masuk ke langkah deploy.
 
+## Kesimpulan
+
 Dengan susunan ini, Laravel tidak lagi mengerjakan tugas berat di dalam request. Apache2 tetap ringan, worker menangani antrean di belakang, dan Supervisor memastikan worker hidup kembali kalau mati.
