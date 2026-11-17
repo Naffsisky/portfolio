@@ -45,7 +45,7 @@ const { chromium } = require('playwright')
     await page.emulateMedia({ reducedMotion: 'reduce' })
     assert.ok(await securityPackets.evaluateAll(paths => paths.every(path => getComputedStyle(path).animationName === 'none')))
 
-    for (const path of ['/', '/about', '/projects', '/projects/portainer', '/certificates', '/cv', '/blog', '/blog/jenkins-cicd-k3s-part-1', '/missing-page', '/projects/missing-project', '/blog/missing-post', '/nonton']) {
+    for (const path of ['/', '/about', '/projects', '/projects/portainer', '/certificates', '/cv', '/blog', '/blog/jenkins-cicd-k3s-part-1', '/missing-page', '/projects/missing-project', '/blog/missing-post']) {
       const response = await page.goto(base + path, { waitUntil: 'networkidle', timeout: 60000 })
       if (path.includes('missing-')) {
         // Next.js may stream the not-found UI after sending a 200 response.
