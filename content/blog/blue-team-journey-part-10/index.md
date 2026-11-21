@@ -294,4 +294,4 @@ Hands-on practice mengubah pengetahuan menjadi kemampuan. Platform membantu meny
 
 Di part ini kita membangun capstone mini SOC: evidence pack, 10 pertanyaan, checker otomatis, dan writeup. Pola ini bisa diperluas menjadi challenge sendiri—tambahkan PCAP, memory dump, atau EVTX, lalu buat pertanyaan yang memaksa analisis, bukan hafalan.
 
-Part berikutnya adalah **Build Your Portfolio (Phase 9)**: memilih project, menyusun studi kasus, dan mempublikasikan bukti kemampuan tanpa membocorkan data sensitif.
+Seri ini ditutup dengan [Penutup: Dari Nol ke Blue Team, dan Langkah Setelahnya](/blog/blue-team-journey-penutup), yang merangkum perjalanan, memetakan karier, dan memberi rencana 90 hari.
